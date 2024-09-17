@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab_1", "Lab_1.csproj", "{DF591869-5185-479E-B4C0-1BEE1C92FCE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinForm", "WinForm.csproj", "{DF591869-5185-479E-B4C0-1BEE1C92FCE5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM_Library", "..\ATM_Library\ATM_Library.csproj", "{DEA442C5-4E33-4D46-895B-29951E3BE492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmLibrary", "..\ATM_Library\AtmLibrary.csproj", "{DEA442C5-4E33-4D46-895B-29951E3BE492}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

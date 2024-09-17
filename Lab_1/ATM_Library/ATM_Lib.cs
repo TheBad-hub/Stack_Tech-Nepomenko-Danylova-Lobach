@@ -1,4 +1,4 @@
-﻿namespace ATM_Library
+﻿namespace AtmLibrary
 {
     public class Account
     {
@@ -92,5 +92,4 @@
             return Atms.FirstOrDefault(atm => atm.Id == id);
         }
     }
-
 }
