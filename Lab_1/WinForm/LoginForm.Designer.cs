@@ -85,24 +85,28 @@
         {
             string cardNumber = txtCardNumber.Text;
             string pinCode = txtPinCode.Text;
-            ///
-            /// TODO: Перевірка пін-коду
-            ///
 
             if (accounts.ContainsKey(cardNumber))
             {
                 currentAccount = accounts[cardNumber];
 
-                MessageBox.Show("Успішна автентифікація");
+                if (currentAccount.ValidatePin(pinCode))
+                {
+                    MessageBox.Show("Успішна автентифікація");
 
-                // Відкриваємо основну форму ATM та передаємо туди дані
-                AtmForm atmForm = new AtmForm(currentAccount, atm);
-                atmForm.Show();
-                this.Hide(); 
+                    // Відкриваємо основну форму ATM та передаємо туди дані
+                    AtmForm atmForm = new AtmForm(currentAccount, atm);
+                    atmForm.Show();
+                    this.Hide();  
+                }
+                else
+                {
+                    MessageBox.Show("Невірний пін-код");
+                }
             }
             else
             {
-                MessageBox.Show("Невірний номер картки або пін-код");
+                MessageBox.Show("Невірний номер картки");
             }
         }
     }

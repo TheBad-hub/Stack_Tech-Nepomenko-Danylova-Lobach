@@ -5,16 +5,23 @@
         public string CardNumber { get; set; }
         public string OwnerName { get; set; }
         public decimal Balance { get; set; }
+        private string PinCode { get; set; }
         public List<string> TransactionHistory {  get; private set; }
         
-        public Account(string cardNumber, string ownerName, decimal initialBalance) 
+        public Account(string cardNumber, string ownerName, decimal initialBalance, string pinCode) 
         {
             CardNumber = cardNumber;
             OwnerName = ownerName;
             Balance = initialBalance;
+            PinCode = pinCode;
             TransactionHistory = new List<string>();
-
         }
+
+        public bool ValidatePin(string pinCode)
+        {
+            return PinCode == pinCode; 
+        }
+
         public void Deposit(decimal amount)
         {
             Balance += amount;

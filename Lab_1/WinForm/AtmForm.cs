@@ -13,6 +13,14 @@ namespace WinForm
             currentAccount = account;
             this.atm = atm;
             UpdateAccountInfo(); // Оновлюємо інформацію на формі
+
+            this.FormClosing += AtmForm_FormClosing;
+        }
+
+        // Оброблювач події закриття форми
+        private void AtmForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
     }
