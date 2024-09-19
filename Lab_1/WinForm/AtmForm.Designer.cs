@@ -1,4 +1,6 @@
-﻿namespace WinForm
+﻿using AtmLibrary;
+
+namespace WinForm
 {
     partial class AtmForm
     {
@@ -71,6 +73,7 @@
             btnDeposit.TabIndex = 3;
             btnDeposit.Text = "btnDeposit";
             btnDeposit.UseVisualStyleBackColor = true;
+            btnDeposit.Click += btnDeposit_Click;
             // 
             // btnTransfer
             // 
@@ -80,6 +83,7 @@
             btnTransfer.TabIndex = 4;
             btnTransfer.Text = "btnTransfer";
             btnTransfer.UseVisualStyleBackColor = true;
+            btnTransfer.Click += btnTransfer_Click;
             // 
             // AtmForm
             // 
@@ -121,6 +125,18 @@
             withdrawForm.ShowDialog();
             UpdateBalanceInfo();
         }
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            DepositForm depositForm = new DepositForm(currentAccount);
+            depositForm.ShowDialog();
+            UpdateBalanceInfo();
+        }
 
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            TransferForm transferForm = new TransferForm(currentAccount, accounts);
+            transferForm.ShowDialog();
+            UpdateBalanceInfo();
+        }
     }
 }

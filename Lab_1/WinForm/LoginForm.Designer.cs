@@ -95,12 +95,12 @@
                     MessageBox.Show("Успішна автентифікація");
 
                     // Открываем основную форму ATM и передаем данные
-                    AtmForm atmForm = new AtmForm(currentAccount, atm);
+                    AtmForm atmForm = new AtmForm(currentAccount, atm, accounts);
                     atmForm.Show();
                     this.Hide();
                 }
                 else
-                {
+                {   
                     MessageBox.Show("Невірний пін-код");
                 }
             }

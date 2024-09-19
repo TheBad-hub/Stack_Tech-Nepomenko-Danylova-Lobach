@@ -6,12 +6,14 @@ namespace WinForm
     {
         private Account currentAccount;
         private AutomatedTellerMachine atm;
+        private Dictionary<string, Account>? accounts;
 
-        public AtmForm(Account account, AutomatedTellerMachine atm)
+        public AtmForm(Account account, AutomatedTellerMachine atm, Dictionary<string, Account> accounts)
         {
             InitializeComponent();
             currentAccount = account;
             this.atm = atm;
+            this.accounts = accounts;
 
             // Оновлюємо інформацію на формі
             UpdateNameInfo();
