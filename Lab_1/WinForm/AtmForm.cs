@@ -6,15 +6,26 @@ namespace WinForm
     {
         private Account currentAccount;
         private AutomatedTellerMachine atm;
+        private Dictionary<string, Account>? accounts;
 
-        public AtmForm(Account account, AutomatedTellerMachine atm)
+        public AtmForm(Account account, AutomatedTellerMachine atm, Dictionary<string, Account> accounts)
         {
             InitializeComponent();
             currentAccount = account;
             this.atm = atm;
-            UpdateAccountInfo(); // Оновлюємо інформацію на формі
+            this.accounts = accounts;
+
+            // Оновлюємо інформацію на формі
+            UpdateNameInfo();
+            UpdateBalanceInfo();
+            this.FormClosing += AtmForm_FormClosing;
         }
 
+        // Оброблювач події закриття форми
+        private void AtmForm_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 

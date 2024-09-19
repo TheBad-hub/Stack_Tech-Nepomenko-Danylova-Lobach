@@ -5,27 +5,15 @@ namespace WinForm
 {
     public partial class LoginForm : Form
     {
-        private Account currentAccount;
-        private Bank bank;
-        private AutomatedTellerMachine atm;
-        private Dictionary<string, Account> accounts = new Dictionary<string, Account>();
+        private readonly Dictionary<string, Account>? accounts; 
+        private Account? currentAccount;  
+        private readonly AutomatedTellerMachine atm;  
 
-        public LoginForm()
+        public LoginForm(Dictionary<string, Account> accounts, AutomatedTellerMachine atm)
         {
             InitializeComponent();
-            InitializeBank();
-        }
-        private void InitializeBank()
-        {
-            bank = new Bank("MyBank");
-            atm = new AutomatedTellerMachine(1, "Main Street", 10000);
-            bank.AddAtm(atm);
-
-            var account1 = new Account("0123456789", "Harry Potter", 5000);
-            var account2 = new Account("9876543210", "Jack Napier a.k.a. Joker", 3000);
-            accounts.Add(account1.CardNumber, account1);
-            accounts.Add(account2.CardNumber, account2);
-
+            this.accounts = accounts;
+            this.atm = atm;  
         }
     }
 }
