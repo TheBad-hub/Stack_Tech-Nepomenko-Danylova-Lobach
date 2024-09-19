@@ -30,6 +30,9 @@
         {
             lblBalance = new Label();
             lblName = new Label();
+            btnWithdraw = new Button();
+            btnDeposit = new Button();
+            btnTransfer = new Button();
             SuspendLayout();
             // 
             // lblBalance
@@ -50,11 +53,42 @@
             lblName.TabIndex = 1;
             lblName.Text = "lblName";
             // 
+            // btnWithdraw
+            // 
+            btnWithdraw.Location = new Point(43, 156);
+            btnWithdraw.Name = "btnWithdraw";
+            btnWithdraw.Size = new Size(94, 29);
+            btnWithdraw.TabIndex = 2;
+            btnWithdraw.Text = "btnWithdraw";
+            btnWithdraw.UseVisualStyleBackColor = true;
+            btnWithdraw.Click += btnWithdraw_Click;
+            // 
+            // btnDeposit
+            // 
+            btnDeposit.Location = new Point(43, 211);
+            btnDeposit.Name = "btnDeposit";
+            btnDeposit.Size = new Size(94, 29);
+            btnDeposit.TabIndex = 3;
+            btnDeposit.Text = "btnDeposit";
+            btnDeposit.UseVisualStyleBackColor = true;
+            // 
+            // btnTransfer
+            // 
+            btnTransfer.Location = new Point(43, 274);
+            btnTransfer.Name = "btnTransfer";
+            btnTransfer.Size = new Size(94, 29);
+            btnTransfer.TabIndex = 4;
+            btnTransfer.Text = "btnTransfer";
+            btnTransfer.UseVisualStyleBackColor = true;
+            // 
             // AtmForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnTransfer);
+            Controls.Add(btnDeposit);
+            Controls.Add(btnWithdraw);
             Controls.Add(lblName);
             Controls.Add(lblBalance);
             Name = "AtmForm";
@@ -66,13 +100,27 @@
         #endregion
 
         private Label lblBalance;
+        private Label lblName;
+        private Button btnWithdraw;
+        private Button btnDeposit;
+        private Button btnTransfer;
 
-        private void UpdateAccountInfo()
+        private void UpdateNameInfo()
         {
-            lblName.Text = $"Привіт, {currentAccount.OwnerName}!";
-            lblBalance.Text = $"Баланс: {currentAccount.Balance} грн";
+            lblName.Text = $"Hello, {currentAccount.Owner}!";
         }
 
-        private Label lblName;
+        private void UpdateBalanceInfo()
+        {
+            lblBalance.Text = $"Your balance: {currentAccount.Balance} uah";
+        }
+
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            WithdrawForm withdrawForm = new WithdrawForm(currentAccount);
+            withdrawForm.ShowDialog();
+            UpdateBalanceInfo();
+        }
+
     }
 }

@@ -2,49 +2,44 @@
 {
     public class Account
     {
-        public string CardNumber { get; set; }
-        public string OwnerName { get; set; }
-        public decimal Balance { get; set; }
-        private string PinCode { get; set; }
-        public List<string> TransactionHistory {  get; private set; }
-        
-        public Account(string cardNumber, string ownerName, decimal initialBalance, string pinCode) 
+        public string CardNumber { get; private set; }
+        public string Owner { get; private set; }
+        public decimal Balance { get; private set; }
+        private string PinCode;
+        private List<string> transactions;
+
+        public Account(string cardNumber, string owner, decimal balance, string pinCode)
         {
             CardNumber = cardNumber;
-            OwnerName = ownerName;
-            Balance = initialBalance;
+            Owner = owner;
+            Balance = balance;
             PinCode = pinCode;
-            TransactionHistory = new List<string>();
+            transactions = new List<string>();
         }
 
-        public bool ValidatePin(string pinCode)
+        public void Withdraw(decimal amount)
         {
-            return PinCode == pinCode; 
+            Balance -= amount;
         }
 
         public void Deposit(decimal amount)
         {
             Balance += amount;
-            TransactionHistory.Add($"Deposited: {amount} - {DateTime.Now}");
         }
 
-        public void Withdraw(decimal amount)
+        public void AddTransaction(string transaction)
         {
-            if (Balance >= amount)
-            {
-                Balance -= amount;
-                TransactionHistory.Add($"Withdrawn: {amount} - {DateTime.Now}");
-            }
-            else
-            {
-                throw new InvalidOperationException("Insufficient funds.");
-            }
+            transactions.Add($"{DateTime.Now}: {transaction}");
         }
 
-        public string GetTransactionHistory(DateTime from, DateTime to)
+        public List<string> GetTransactionHistory()
         {
-            var history = TransactionHistory.Where(t => DateTime.Parse(t.Split('-')[1]) >= from && DateTime.Parse(t.Split('-')[1]) <= to);
-            return string.Join("\n", history);
+            return transactions;
+        }
+
+        public bool ValidatePin(string pin)
+        {
+            return PinCode == pin;
         }
     }
     public class AutomatedTellerMachine
@@ -99,4 +94,28 @@
             return Atms.FirstOrDefault(atm => atm.Id == id);
         }
     }
+
+    public class BankInitializer
+    {
+        public Bank? bank { get; private set; }
+        public AutomatedTellerMachine? atm { get; private set; }
+
+        public Dictionary<string, Account> InitializeBank()
+        {
+            bank = new Bank("MyBank");
+            atm = new AutomatedTellerMachine(1, "Main Street", 10000);
+            bank.AddAtm(atm);
+
+            var accounts = new Dictionary<string, Account>();
+
+            var account1 = new Account("0123456789", "Harry Potter", 5000, "1234");
+            var account2 = new Account("9876543210", "Jack Napier a.k.a. Joker", 3000, "4321");
+
+            accounts.Add(account1.CardNumber, account1);
+            accounts.Add(account2.CardNumber, account2);
+
+            return accounts;
+        }
+    }
+
 }

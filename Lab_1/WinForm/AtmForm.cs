@@ -12,17 +12,18 @@ namespace WinForm
             InitializeComponent();
             currentAccount = account;
             this.atm = atm;
-            UpdateAccountInfo(); // Оновлюємо інформацію на формі
 
+            // Оновлюємо інформацію на формі
+            UpdateNameInfo();
+            UpdateBalanceInfo();
             this.FormClosing += AtmForm_FormClosing;
         }
 
         // Оброблювач події закриття форми
-        private void AtmForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void AtmForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
-
     }
 }
 

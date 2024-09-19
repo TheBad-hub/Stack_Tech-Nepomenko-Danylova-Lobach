@@ -94,10 +94,10 @@
                 {
                     MessageBox.Show("Успішна автентифікація");
 
-                    // Відкриваємо основну форму ATM та передаємо туди дані
+                    // Открываем основную форму ATM и передаем данные
                     AtmForm atmForm = new AtmForm(currentAccount, atm);
                     atmForm.Show();
-                    this.Hide();  
+                    this.Hide();
                 }
                 else
                 {
@@ -111,3 +111,4 @@
         }
     }
 }
+
