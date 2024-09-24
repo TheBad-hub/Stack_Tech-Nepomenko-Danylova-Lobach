@@ -4,16 +4,18 @@ namespace WinForm
 {
     public partial class AtmForm : Form
     {
+        private Bank bank;
         private Account currentAccount;
         private AutomatedTellerMachine atm;
         private Dictionary<string, Account>? accounts;
 
-        public AtmForm(Account account, AutomatedTellerMachine atm, Dictionary<string, Account> accounts)
+        public AtmForm(BankInitializer initializer, Account account)
         {
             InitializeComponent();
             currentAccount = account;
-            this.atm = atm;
-            this.accounts = accounts;
+            this.bank = initializer.bank;
+            this.atm = initializer.atm;
+
 
             // Оновлюємо інформацію на формі
             UpdateNameInfo();

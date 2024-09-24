@@ -1,4 +1,6 @@
-﻿namespace WinForm
+﻿using AtmLibrary;
+
+namespace WinForm
 {
     partial class LoginForm
     {
@@ -95,7 +97,7 @@
                     MessageBox.Show("Успішна автентифікація");
 
                     // Открываем основную форму ATM и передаем данные
-                    AtmForm atmForm = new AtmForm(currentAccount, atm, accounts);
+                    AtmForm atmForm = new AtmForm(initializer,currentAccount);
                     atmForm.Show();
                     this.Hide();
                 }

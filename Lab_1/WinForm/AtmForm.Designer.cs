@@ -1,4 +1,5 @@
 ﻿using AtmLibrary;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WinForm
 {
@@ -35,6 +36,8 @@ namespace WinForm
             btnWithdraw = new Button();
             btnDeposit = new Button();
             btnTransfer = new Button();
+            btnShowNearestATMs = new Button();
+            btnTransactionHistory = new Button();
             SuspendLayout();
             // 
             // lblBalance
@@ -85,11 +88,33 @@ namespace WinForm
             btnTransfer.UseVisualStyleBackColor = true;
             btnTransfer.Click += btnTransfer_Click;
             // 
+            // btnShowNearestATMs
+            // 
+            btnShowNearestATMs.Location = new Point(444, 162);
+            btnShowNearestATMs.Name = "btnShowNearestATMs";
+            btnShowNearestATMs.Size = new Size(94, 29);
+            btnShowNearestATMs.TabIndex = 5;
+            btnShowNearestATMs.Text = "btnShowNearestATMs";
+            btnShowNearestATMs.UseVisualStyleBackColor = true;
+            btnShowNearestATMs.Click += BtnShowNearestATMs_Click;
+            // 
+            // btnTransactionHistory
+            // 
+            btnTransactionHistory.Location = new Point(452, 248);
+            btnTransactionHistory.Name = "btnTransactionHistory";
+            btnTransactionHistory.Size = new Size(94, 29);
+            btnTransactionHistory.TabIndex = 6;
+            btnTransactionHistory.Text = "btnTransactionHistory";
+            btnTransactionHistory.UseVisualStyleBackColor = true;
+            btnTransactionHistory.Click += BtnTransactionHistory_Click;
+            // 
             // AtmForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnTransactionHistory);
+            Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);
             Controls.Add(btnDeposit);
             Controls.Add(btnWithdraw);
@@ -138,5 +163,29 @@ namespace WinForm
             transferForm.ShowDialog();
             UpdateBalanceInfo();
         }
+        private void BtnShowNearestATMs_Click(object sender, EventArgs e)
+        {
+            if (bank != null && atm != null)
+            {
+                // Отримуємо найближчі банкомати 
+                var nearestAtms = bank.GetNearestATMs(atm, 4);
+
+                NearestAtmsForm nearestAtmsForm = new NearestAtmsForm(nearestAtms, atm);
+
+                nearestAtmsForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Помилка: не знайдено банкомат або банк.");
+            }
+        }
+        private void BtnTransactionHistory_Click(object sender, EventArgs e)
+        {
+            var transactionHistoryForm = new TransactionHistoryForm(currentAccount.GetTransactionHistory());
+            transactionHistoryForm.Show();
+        }
+
+        private Button btnShowNearestATMs;
+        private Button btnTransactionHistory;
     }
 }

@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-
+        
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -94,9 +94,6 @@
                     {
                         currentAccount.Withdraw(amount);
                         targetAccount.Deposit(amount);
-
-                        currentAccount.AddTransaction($"Перераховано {amount:C} на картку {targetCardNumber}");
-                        targetAccount.AddTransaction($"Отримано {amount:C} від {currentAccount.CardNumber}");
 
                         MessageBox.Show($"Ви перерахували {amount:C} на картку {targetCardNumber}. Ваш баланс: {currentAccount.Balance:C}");
                         this.Close();
