@@ -39,6 +39,7 @@ namespace WinForm
             btnTransfer = new Button();
             btnShowNearestATMs = new Button();
             btnTransactionHistory = new Button();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // lblBalance
@@ -54,7 +55,7 @@ namespace WinForm
             // 
             lblName.AutoSize = true;
             lblName.BackColor = SystemColors.Control;
-            lblName.Location = new Point(456, 49);
+            lblName.Location = new Point(449, 49);
             lblName.Name = "lblName";
             lblName.Size = new Size(52, 15);
             lblName.TabIndex = 1;
@@ -142,11 +143,25 @@ namespace WinForm
             btnTransactionHistory.UseVisualStyleBackColor = true;
             btnTransactionHistory.Click += BtnTransactionHistory_Click;
             // 
+            // btnExit
+            // 
+            btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
+            btnExit.FlatStyle = FlatStyle.Popup;
+            btnExit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnExit.Location = new Point(790, 358);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(140, 34);
+            btnExit.TabIndex = 7;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
+            // 
             // AtmForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(940, 463);
+            Controls.Add(btnExit);
             Controls.Add(btnTransactionHistory);
             Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);
@@ -223,5 +238,12 @@ namespace WinForm
 
         private Button btnShowNearestATMs;
         private Button btnTransactionHistory;
+        private Button btnExit;
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm(new BankInitializer(this.bank, this.atm, accounts));
+            loginForm.Show();
+        }
     }
 }

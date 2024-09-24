@@ -28,26 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NearestAtmsForm));
             lstNearestAtms = new ListBox();
             SuspendLayout();
             // 
             // lstNearestAtms
             // 
             lstNearestAtms.FormattingEnabled = true;
-            lstNearestAtms.Location = new Point(224, 60);
+            lstNearestAtms.ItemHeight = 15;
+            lstNearestAtms.Location = new Point(196, 45);
+            lstNearestAtms.Margin = new Padding(3, 2, 3, 2);
             lstNearestAtms.Name = "lstNearestAtms";
-            lstNearestAtms.Size = new Size(350, 300);
-            lstNearestAtms.Text = "Найближчі банкомати";
+            lstNearestAtms.Size = new Size(307, 214);
             lstNearestAtms.TabIndex = 0;
             // 
             // NearestAtmsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleMode = AutoScaleMode.None;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(700, 338);
             Controls.Add(lstNearestAtms);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "NearestAtmsForm";
             Text = "NearestAtmsForm";
+            Load += NearestAtmsForm_Load;
             ResumeLayout(false);
         }
 

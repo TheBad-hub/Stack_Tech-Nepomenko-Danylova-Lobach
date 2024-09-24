@@ -218,19 +218,38 @@
     {
         public Bank? bank { get; private set; }
         public AutomatedTellerMachine? atm { get; private set; }
+        private Dictionary<string, Account>? accounts;
 
-        List<AutomatedTellerMachine> atms = new List<AutomatedTellerMachine>
+        // Constructor that initializes with Bank, ATM, and Accounts
+        public BankInitializer(Bank bank, AutomatedTellerMachine atm, Dictionary<string, Account> accounts)
         {
-            new AutomatedTellerMachine("ATM 1", 50.4501, 30.5234, 10000),
-            new AutomatedTellerMachine("ATM 2", 51.4511, 29.5244, 15000),
-            new AutomatedTellerMachine("ATM 3", 52.4521, 27.5254, 6500),
-            new AutomatedTellerMachine("ATM 4", 48.1214, 39.9954, 8500),
+            this.bank = bank;
+            this.atm = atm;
+            this.accounts = accounts;
+        }
 
-        };
+        // Default constructor
+        public BankInitializer()
+        {
+        }
 
         public Dictionary<string, Account> GetAccounts()
         {
+            if (accounts != null)
+            {
+                return accounts;
+            }
+
+            // Initialize bank, ATM, and accounts in the default way if accounts are not provided
             bank = new Bank("MyBank");
+
+            List<AutomatedTellerMachine> atms = new List<AutomatedTellerMachine>
+            {
+                new AutomatedTellerMachine("ATM 1", 50.4501, 30.5234, 10000),
+                new AutomatedTellerMachine("ATM 2", 51.4511, 29.5244, 15000),
+                new AutomatedTellerMachine("ATM 3", 52.4521, 27.5254, 6500),
+                new AutomatedTellerMachine("ATM 4", 48.1214, 39.9954, 8500),
+            };
 
             foreach (var atm in atms)
             {
@@ -240,13 +259,11 @@
             atm = new AutomatedTellerMachine("ATM MAIN", 48.0805, 37.4440, 10000);
             bank.AddAtm(atm);
 
-            var accounts = new Dictionary<string, Account>();
-
-            var account1 = new Account("0123456789", "Harry Potter", 5000, "1234");
-            var account2 = new Account("9876543210", "Jack Napier a.k.a. Joker", 3000, "4321");
-
-            accounts.Add(account1.CardNumber, account1);
-            accounts.Add(account2.CardNumber, account2);
+            accounts = new Dictionary<string, Account>
+            {
+                { "0123456789", new Account("0123456789", "Harry Potter", 5000, "1234") },
+                { "9876543210", new Account("9876543210", "Jack Napier a.k.a. Joker", 3000, "4321") }
+            };
 
             return accounts;
         }

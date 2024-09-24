@@ -31,6 +31,7 @@ namespace WinForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionHistoryForm));
             cmbFilter = new ComboBox();
             lstTransactions = new ListBox();
             SuspendLayout();
@@ -38,26 +39,31 @@ namespace WinForm
             // cmbFilter
             // 
             cmbFilter.FormattingEnabled = true;
-            cmbFilter.Location = new Point(213, 300);
+            cmbFilter.Location = new Point(291, 265);
+            cmbFilter.Margin = new Padding(3, 2, 3, 2);
             cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new Size(151, 28);
+            cmbFilter.Size = new Size(133, 23);
             cmbFilter.TabIndex = 0;
             // 
             // lstTransactions
             // 
             lstTransactions.FormattingEnabled = true;
-            lstTransactions.Location = new Point(40, 26);
+            lstTransactions.ItemHeight = 15;
+            lstTransactions.Location = new Point(146, 110);
+            lstTransactions.Margin = new Padding(3, 2, 3, 2);
             lstTransactions.Name = "lstTransactions";
-            lstTransactions.Size = new Size(483, 104);
+            lstTransactions.Size = new Size(423, 79);
             lstTransactions.TabIndex = 1;
             // 
             // TransactionHistoryForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(700, 360);
             Controls.Add(lstTransactions);
             Controls.Add(cmbFilter);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "TransactionHistoryForm";
             Text = "TransactionHistoryForm";
             ResumeLayout(false);
