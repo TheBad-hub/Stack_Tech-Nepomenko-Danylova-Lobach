@@ -34,17 +34,19 @@
             // 
             // txtWithdrawAmount
             // 
-            txtWithdrawAmount.Location = new Point(138, 110);
+            txtWithdrawAmount.Location = new Point(121, 82);
+            txtWithdrawAmount.Margin = new Padding(3, 2, 3, 2);
             txtWithdrawAmount.Name = "txtWithdrawAmount";
-            txtWithdrawAmount.Size = new Size(125, 27);
+            txtWithdrawAmount.Size = new Size(110, 23);
             txtWithdrawAmount.TabIndex = 0;
             txtWithdrawAmount.Text = "txtWithdrawAmount";
             // 
             // btnConfirmWithdraw
             // 
-            btnConfirmWithdraw.Location = new Point(139, 182);
+            btnConfirmWithdraw.Location = new Point(122, 136);
+            btnConfirmWithdraw.Margin = new Padding(3, 2, 3, 2);
             btnConfirmWithdraw.Name = "btnConfirmWithdraw";
-            btnConfirmWithdraw.Size = new Size(94, 29);
+            btnConfirmWithdraw.Size = new Size(82, 22);
             btnConfirmWithdraw.TabIndex = 1;
             btnConfirmWithdraw.Text = "btnConfirmWithdraw";
             btnConfirmWithdraw.UseVisualStyleBackColor = true;
@@ -52,11 +54,11 @@
             // 
             // WithdrawForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(700, 338);
             Controls.Add(btnConfirmWithdraw);
             Controls.Add(txtWithdrawAmount);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "WithdrawForm";
             Text = "WithdrawForm";
             ResumeLayout(false);

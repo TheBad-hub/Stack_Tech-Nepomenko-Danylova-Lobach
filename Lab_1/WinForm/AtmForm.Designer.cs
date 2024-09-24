@@ -44,9 +44,9 @@ namespace WinForm
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(329, 111);
+            lblBalance.Location = new Point(288, 83);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(78, 20);
+            lblBalance.Size = new Size(61, 15);
             lblBalance.TabIndex = 0;
             lblBalance.Text = "lblBalance";
             // 
@@ -54,9 +54,9 @@ namespace WinForm
             // 
             lblName.AutoSize = true;
             lblName.BackColor = SystemColors.Control;
-            lblName.Location = new Point(339, 61);
+            lblName.Location = new Point(297, 46);
             lblName.Name = "lblName";
-            lblName.Size = new Size(66, 20);
+            lblName.Size = new Size(52, 15);
             lblName.TabIndex = 1;
             lblName.Text = "lblName";
             // 
@@ -70,9 +70,10 @@ namespace WinForm
             btnWithdraw.FlatStyle = FlatStyle.Popup;
             btnWithdraw.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnWithdraw.ForeColor = SystemColors.ControlText;
-            btnWithdraw.Location = new Point(46, 156);
+            btnWithdraw.Location = new Point(40, 117);
+            btnWithdraw.Margin = new Padding(3, 2, 3, 2);
             btnWithdraw.Name = "btnWithdraw";
-            btnWithdraw.Size = new Size(94, 29);
+            btnWithdraw.Size = new Size(82, 22);
             btnWithdraw.TabIndex = 2;
             btnWithdraw.Text = "Withdraw";
             btnWithdraw.UseVisualStyleBackColor = false;
@@ -86,9 +87,10 @@ namespace WinForm
             btnDeposit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnDeposit.FlatStyle = FlatStyle.Popup;
             btnDeposit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnDeposit.Location = new Point(46, 259);
+            btnDeposit.Location = new Point(40, 194);
+            btnDeposit.Margin = new Padding(3, 2, 3, 2);
             btnDeposit.Name = "btnDeposit";
-            btnDeposit.Size = new Size(94, 29);
+            btnDeposit.Size = new Size(82, 22);
             btnDeposit.TabIndex = 3;
             btnDeposit.Text = "Deposit";
             btnDeposit.UseVisualStyleBackColor = true;
@@ -101,9 +103,10 @@ namespace WinForm
             btnTransfer.FlatStyle = FlatStyle.Popup;
             btnTransfer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnTransfer.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTransfer.Location = new Point(46, 361);
+            btnTransfer.Location = new Point(40, 271);
+            btnTransfer.Margin = new Padding(3, 2, 3, 2);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(94, 29);
+            btnTransfer.Size = new Size(82, 22);
             btnTransfer.TabIndex = 4;
             btnTransfer.Text = "Transfer";
             btnTransfer.UseVisualStyleBackColor = true;
@@ -115,9 +118,10 @@ namespace WinForm
             btnShowNearestATMs.FlatAppearance.BorderSize = 0;
             btnShowNearestATMs.FlatStyle = FlatStyle.Popup;
             btnShowNearestATMs.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnShowNearestATMs.Location = new Point(679, 156);
+            btnShowNearestATMs.Location = new Point(594, 117);
+            btnShowNearestATMs.Margin = new Padding(3, 2, 3, 2);
             btnShowNearestATMs.Name = "btnShowNearestATMs";
-            btnShowNearestATMs.Size = new Size(94, 29);
+            btnShowNearestATMs.Size = new Size(82, 22);
             btnShowNearestATMs.TabIndex = 5;
             btnShowNearestATMs.Text = " ATMs Near ";
             btnShowNearestATMs.UseVisualStyleBackColor = true;
@@ -129,9 +133,10 @@ namespace WinForm
             btnTransactionHistory.FlatAppearance.BorderSize = 0;
             btnTransactionHistory.FlatStyle = FlatStyle.Popup;
             btnTransactionHistory.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnTransactionHistory.Location = new Point(679, 259);
+            btnTransactionHistory.Location = new Point(594, 194);
+            btnTransactionHistory.Margin = new Padding(3, 2, 3, 2);
             btnTransactionHistory.Name = "btnTransactionHistory";
-            btnTransactionHistory.Size = new Size(94, 29);
+            btnTransactionHistory.Size = new Size(82, 22);
             btnTransactionHistory.TabIndex = 6;
             btnTransactionHistory.Text = "History";
             btnTransactionHistory.UseVisualStyleBackColor = true;
@@ -139,10 +144,9 @@ namespace WinForm
             // 
             // AtmForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(698, 330);
+            ClientSize = new Size(700, 338);
             Controls.Add(btnTransactionHistory);
             Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);
@@ -150,6 +154,7 @@ namespace WinForm
             Controls.Add(btnWithdraw);
             Controls.Add(lblName);
             Controls.Add(lblBalance);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AtmForm";
             Text = "AtmFormcs";
             Load += AtmForm_Load;

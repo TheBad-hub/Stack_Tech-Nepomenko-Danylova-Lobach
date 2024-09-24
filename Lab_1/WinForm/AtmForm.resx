@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,7 +121,7 @@
   <data name="btnWithdraw.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFIAAAAWCAYAAABT5cvhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
+        DQAACw0B7QfALAAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
         RLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7A7L/H+TQQY68
         9guEkPJOsc3tGgAAAABJRU5ErkJggg==
 </value>
@@ -129,7 +129,7 @@
   <data name="btnDeposit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFIAAAAWCAYAAABT5cvhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
+        DQAACw0B7QfALAAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
         RLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7A7L/H+TQQY68
         9guEkPJOsc3tGgAAAABJRU5ErkJggg==
 </value>
@@ -137,7 +137,7 @@
   <data name="btnTransfer.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFIAAAAWCAYAAABT5cvhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
+        DgAACw4BQL7hQQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
         RLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7A7L/H+TQQY68
         9guEkPJOsc3tGgAAAABJRU5ErkJggg==
 </value>
@@ -145,7 +145,7 @@
   <data name="btnShowNearestATMs.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFIAAAAWCAYAAABT5cvhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
+        DwAACw8BkvkDpQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
         RLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7A7L/H+TQQY68
         9guEkPJOsc3tGgAAAABJRU5ErkJggg==
 </value>
@@ -153,7 +153,7 @@
   <data name="btnTransactionHistory.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFIAAAAWCAYAAABT5cvhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
+        DwAACw8BkvkDpQAAAGxJREFUWEft0DERgDAUwFB0oQsFNV7WdIT8MbmLgXfdz9rtD3LoIIc+IOtbtAtS
         RLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7IEW0C1JEuyBFtAtSRLsgRbQLUkS7A7L/H+TQQY68
         9guEkPJOsc3tGgAAAABJRU5ErkJggg==
 </value>
@@ -161,7 +161,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAswAAAF5CAYAAACLPnxBAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAA/7JJREFUeF7M/fefHtd1LXjjP5y5vtdj+zpJsiQqUCKVI5UpkaJESSTFnESJmQRA
+        DQAACw0B7QfALAAA/7JJREFUeF7M/fefHtd1LXjjP5y5vtdj+zpJsiQqUCKVI5UpkaJESSTFnESJmQRA
         MCMDRM5AA92NnDODpOvf611r773O2edUPQ1Q9juf+WF99qnqBoiGPb5frNlVz7LtRy8O249eGHZgWo61
         c6eu05lT2ZXPxy/ZtU2d7Vrh/YvDbsyp7DkRyefI3hOXR3PvSYTTri8N++KaM2d/d7acSue4PnDqSoTn
         /vrKcDBSzqfbHJqYnqsRv547c9WSzzmHlbPj8xFO5MjZaxG/V88+5zHnzyGaM7IwI4vnrw+LnHaO68jR
