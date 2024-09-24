@@ -15,7 +15,7 @@ namespace WinForm
             currentAccount = account;
             this.bank = initializer.bank;
             this.atm = initializer.atm;
-
+            accounts = initializer.GetAccounts();
 
             // Оновлюємо інформацію на формі
             UpdateNameInfo();

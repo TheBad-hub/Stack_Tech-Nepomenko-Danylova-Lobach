@@ -1,4 +1,5 @@
 ﻿using AtmLibrary;
+using System.Security.Principal;
 
 namespace WinForm
 {
@@ -71,23 +72,15 @@ namespace WinForm
 
             if (selectedFilter == "За поточний день")
             {
-                filteredTransactions = transactions
-                    .Where(t => t.Date.Date == DateTime.Now.Date)
-                    .ToList();
+                filteredTransactions = TransactionFilters.FilterByCurrentDay(transactions);
             }
             else if (selectedFilter == "За поточний тиждень")
             {
-                var startOfWeek = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek + 1); // понеділок
-                filteredTransactions = transactions
-                    .Where(t => t.Date >= startOfWeek && t.Date <= DateTime.Now)
-                    .ToList();
+                filteredTransactions = TransactionFilters.FilterByCurrentWeek(transactions);
             }
             else if (selectedFilter == "За поточний місяць")
             {
-                var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                filteredTransactions = transactions
-                    .Where(t => t.Date >= startOfMonth && t.Date <= DateTime.Now)
-                    .ToList();
+                filteredTransactions = TransactionFilters.FilterByCurrentMonth(transactions);
             }
 
             UpdateTransactionHistory(filteredTransactions);

@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace AtmLibrary
+﻿namespace AtmLibrary
 {
     public class Account
     {
@@ -38,6 +36,25 @@ namespace AtmLibrary
             AddTransaction(new Transaction(amount, "Пополнение счета"));
         }
 
+        public void TransferMoney(Account targetAccount, decimal amount)
+        {
+            if (targetAccount.CardNumber == this.CardNumber)
+            {
+                throw new InvalidOperationException("Cannot transfer money to the same account.");
+            }
+
+            if (Balance < amount)
+            {
+                throw new InvalidOperationException("Insufficient funds.");
+            }
+
+            Balance -= amount;
+            targetAccount.Deposit(amount);
+            AddTransaction(new Transaction(-amount, $"Transfer to {targetAccount.Owner}"));
+            targetAccount.AddTransaction(new Transaction(amount, $"Transfer from {Owner}"));
+        }
+
+
         public void AddTransaction(Transaction transaction)
         {
             transactions.Add(transaction);
@@ -71,6 +88,33 @@ namespace AtmLibrary
             return $"{Date}: {Description}, Сумма: {Amount}";
         }
     }
+    public static class TransactionFilters
+    {
+        public static List<Transaction> FilterByCurrentDay(List<Transaction> transactions)
+        {
+            return transactions
+                .Where(t => t.Date.Date == DateTime.Now.Date)
+                .ToList();
+        }
+
+        public static List<Transaction> FilterByCurrentWeek(List<Transaction> transactions)
+        {
+            var startOfWeek = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek + 1); // Monday
+            return transactions
+                .Where(t => t.Date >= startOfWeek && t.Date <= DateTime.Now)
+                .ToList();
+        }
+
+        public static List<Transaction> FilterByCurrentMonth(List<Transaction> transactions)
+        {
+            var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            return transactions
+                .Where(t => t.Date >= startOfMonth && t.Date <= DateTime.Now)
+                .ToList();
+        }
+    }
+
+
     public class AutomatedTellerMachine
     {
         public string Name { get; set; }
@@ -122,7 +166,7 @@ namespace AtmLibrary
 
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            return EARTH_RADIUS * c; 
+            return EARTH_RADIUS * c;
         }
 
         public void RefillCash(decimal amount)
@@ -168,7 +212,7 @@ namespace AtmLibrary
             new AutomatedTellerMachine("ATM 1", 50.4501, 30.5234, 10000),
             new AutomatedTellerMachine("ATM 2", 51.4511, 29.5244, 15000),
             new AutomatedTellerMachine("ATM 3", 52.4521, 27.5254, 6500),
-            new AutomatedTellerMachine("ATM 3", 48.1214, 39.9954, 8500),
+            new AutomatedTellerMachine("ATM 4", 48.1214, 39.9954, 8500),
 
         };
 

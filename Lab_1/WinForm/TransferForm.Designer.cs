@@ -76,44 +76,56 @@
         #endregion
         private void btnConfirmTransfer_Click(object sender, EventArgs e)
         {
-            string targetCardNumber = txtTargetCardNumber.Text;
-            decimal amount;
-            
-            if (targetCardNumber == currentAccount.CardNumber)
+            if (accounts == null)
             {
-                MessageBox.Show("Неможливо перерахувати кошти на ту саму картку.");
+                MessageBox.Show("Accounts data is not available. Please try again.");
                 return;
             }
-            if (accounts.ContainsKey(targetCardNumber))
+
+            string targetCardNumber = txtTargetCardNumber.Text.Trim();
+            decimal amount;
+
+            // Check if the target card number is the same as the current account
+            if (targetCardNumber == currentAccount.CardNumber)
             {
-                var targetAccount = accounts[targetCardNumber];
-
-                if (decimal.TryParse(txtTransferAmount.Text, out amount))
-                {
-                    if (currentAccount.Balance >= amount)
-                    {
-                        currentAccount.Withdraw(amount);
-                        targetAccount.Deposit(amount);
-
-                        MessageBox.Show($"Ви перерахували {amount:C} на картку {targetCardNumber}. Ваш баланс: {currentAccount.Balance:C}");
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Недостатньо коштів на рахунку.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Некоректна сума.");
-                }
+                MessageBox.Show("Cannot transfer money to the same card.");
+                return;
             }
-            else
+
+            // Check if the target account exists
+            if (!accounts.ContainsKey(targetCardNumber))
             {
-                MessageBox.Show("Картка з таким номером не знайдена.");
+                MessageBox.Show("Card with this number not found.");
+                return;
+            }
+
+            var targetAccount = accounts[targetCardNumber];
+
+            // Attempt to parse the transfer amount
+            if (!decimal.TryParse(txtTransferAmount.Text.Trim(), out amount) || amount <= 0)
+            {
+                MessageBox.Show("Invalid amount. Please enter a positive number.");
+                return;
+            }
+
+            try
+            {
+                // Attempt to transfer money
+                currentAccount.TransferMoney(targetAccount, amount);
+                MessageBox.Show($"Successfully transferred {amount:C} to card {targetCardNumber}. Your balance: {currentAccount.Balance:C}");
+                this.Close();
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Handle specific exceptions during transfer
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unforeseen exceptions
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}");
             }
         }
-
         private Button btnConfirmTransfer;
         private TextBox txtTargetCardNumber;
         private TextBox txtTransferAmount;
