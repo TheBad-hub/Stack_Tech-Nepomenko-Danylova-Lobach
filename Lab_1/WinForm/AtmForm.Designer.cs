@@ -146,7 +146,7 @@ namespace WinForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(1421, 636);
             Controls.Add(btnTransactionHistory);
             Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);

@@ -34,7 +34,7 @@
             // 
             // txtWithdrawAmount
             // 
-            txtWithdrawAmount.Location = new Point(121, 82);
+            txtWithdrawAmount.Location = new Point(308, 112);
             txtWithdrawAmount.Margin = new Padding(3, 2, 3, 2);
             txtWithdrawAmount.Name = "txtWithdrawAmount";
             txtWithdrawAmount.Size = new Size(110, 23);
@@ -43,7 +43,7 @@
             // 
             // btnConfirmWithdraw
             // 
-            btnConfirmWithdraw.Location = new Point(122, 136);
+            btnConfirmWithdraw.Location = new Point(317, 208);
             btnConfirmWithdraw.Margin = new Padding(3, 2, 3, 2);
             btnConfirmWithdraw.Name = "btnConfirmWithdraw";
             btnConfirmWithdraw.Size = new Size(82, 22);
