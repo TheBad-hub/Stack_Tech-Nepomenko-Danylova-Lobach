@@ -28,7 +28,7 @@ namespace WinForm
         {
             Application.Exit();
         }
-
+        // test
         private void AtmForm_Load(object sender, EventArgs e)
         {
 
