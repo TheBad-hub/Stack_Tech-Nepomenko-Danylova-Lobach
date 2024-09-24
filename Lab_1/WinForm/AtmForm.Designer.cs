@@ -54,7 +54,7 @@ namespace WinForm
             // 
             lblName.AutoSize = true;
             lblName.BackColor = SystemColors.Control;
-            lblName.Location = new Point(456, 49);
+            lblName.Location = new Point(449, 49);
             lblName.Name = "lblName";
             lblName.Size = new Size(52, 15);
             lblName.TabIndex = 1;

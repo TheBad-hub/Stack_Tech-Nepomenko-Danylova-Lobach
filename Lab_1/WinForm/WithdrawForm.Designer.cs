@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WithdrawForm));
             txtWithdrawAmount = new TextBox();
             btnConfirmWithdraw = new Button();
             SuspendLayout();
@@ -39,22 +40,25 @@
             txtWithdrawAmount.Name = "txtWithdrawAmount";
             txtWithdrawAmount.Size = new Size(110, 23);
             txtWithdrawAmount.TabIndex = 0;
-            txtWithdrawAmount.Text = "txtWithdrawAmount";
             // 
             // btnConfirmWithdraw
             // 
+            btnConfirmWithdraw.BackgroundImage = (Image)resources.GetObject("btnConfirmWithdraw.BackgroundImage");
+            btnConfirmWithdraw.FlatAppearance.BorderSize = 0;
+            btnConfirmWithdraw.FlatStyle = FlatStyle.Popup;
             btnConfirmWithdraw.Location = new Point(317, 208);
             btnConfirmWithdraw.Margin = new Padding(3, 2, 3, 2);
             btnConfirmWithdraw.Name = "btnConfirmWithdraw";
             btnConfirmWithdraw.Size = new Size(82, 22);
             btnConfirmWithdraw.TabIndex = 1;
-            btnConfirmWithdraw.Text = "btnConfirmWithdraw";
+            btnConfirmWithdraw.Text = "Confirm";
             btnConfirmWithdraw.UseVisualStyleBackColor = true;
             btnConfirmWithdraw.Click += btnConfirmWithdraw_Click;
             // 
             // WithdrawForm
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(700, 338);
             Controls.Add(btnConfirmWithdraw);
             Controls.Add(txtWithdrawAmount);
