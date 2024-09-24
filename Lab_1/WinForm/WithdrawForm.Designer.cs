@@ -72,20 +72,27 @@
             decimal amount;
             if (decimal.TryParse(txtWithdrawAmount.Text, out amount))
             {
-                if (currentAccount.Balance >= amount)
+                if (amount > 0)
                 {
-                    currentAccount.Withdraw(amount);
-                    MessageBox.Show($"Ви зняли {amount:C}. Ваш баланс: {currentAccount.Balance:C}");
-                    this.Close();
+                    if (currentAccount.Balance >= amount)
+                    {
+                        currentAccount.Withdraw(amount);
+                        MessageBox.Show($"You have withdrawn {amount:C}. Your balance is: {currentAccount.Balance:C}");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insufficient funds in your account.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Недостатньо коштів на рахунку.");
+                    MessageBox.Show("Withdrawal amount must be a positive number.");
                 }
             }
             else
             {
-                MessageBox.Show("Некоректна сума.");
+                MessageBox.Show("Invalid amount entered.");
             }
         }
 

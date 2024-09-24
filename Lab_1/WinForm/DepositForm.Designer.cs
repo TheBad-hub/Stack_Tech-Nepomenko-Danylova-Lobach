@@ -69,13 +69,20 @@
             decimal amount;
             if (decimal.TryParse(txtDepositAmount.Text, out amount))
             {
-                currentAccount.Deposit(amount);
-                MessageBox.Show($"Ви зарахували {amount:C}. Ваш баланс: {currentAccount.Balance:C}");
-                this.Close();
+                if (amount > 0)
+                {
+                    currentAccount.Deposit(amount);
+                    MessageBox.Show($"You have deposited {amount:C}. Your balance is: {currentAccount.Balance:C}");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Deposit amount must be a positive number.");
+                }
             }
             else
             {
-                MessageBox.Show("Некоректна сума.");
+                MessageBox.Show("Invalid amount entered.");
             }
         }
 

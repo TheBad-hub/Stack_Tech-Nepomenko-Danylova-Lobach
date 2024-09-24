@@ -88,14 +88,14 @@
             // Check if the target card number is the same as the current account
             if (targetCardNumber == currentAccount.CardNumber)
             {
-                MessageBox.Show("Cannot transfer money to the same card.");
+                MessageBox.Show("You cannot transfer money to your own card.");
                 return;
             }
 
             // Check if the target account exists
             if (!accounts.ContainsKey(targetCardNumber))
             {
-                MessageBox.Show("Card with this number not found.");
+                MessageBox.Show("Card with this number was not found.");
                 return;
             }
 
@@ -112,7 +112,7 @@
             {
                 // Attempt to transfer money
                 currentAccount.TransferMoney(targetAccount, amount);
-                MessageBox.Show($"Successfully transferred {amount:C} to card {targetCardNumber}. Your balance: {currentAccount.Balance:C}");
+                MessageBox.Show($"Successfully transferred {amount:C} to card {targetCardNumber}. Your balance is: {currentAccount.Balance:C}");
                 this.Close();
             }
             catch (InvalidOperationException ex)

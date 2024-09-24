@@ -19,25 +19,40 @@
 
         public void Withdraw(decimal amount)
         {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Withdrawal amount must be greater than zero.");
+            }
+
             if (Balance >= amount)
             {
                 Balance -= amount;
-                AddTransaction(new Transaction(-amount, "Снятие наличных"));
+                AddTransaction(new Transaction(-amount, "Withdrawal"));
             }
             else
             {
-                throw new InvalidOperationException("Недостаточно средств на счете.");
+                throw new InvalidOperationException("Insufficient funds.");
             }
         }
 
         public void Deposit(decimal amount)
         {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Deposit amount must be greater than zero.");
+            }
+
             Balance += amount;
-            AddTransaction(new Transaction(amount, "Пополнение счета"));
+            AddTransaction(new Transaction(amount, "Deposit"));
         }
 
         public void TransferMoney(Account targetAccount, decimal amount)
         {
+            if (amount <= 0)
+            {
+                throw new ArgumentException("Transfer amount must be greater than zero.");
+            }
+
             if (targetAccount.CardNumber == this.CardNumber)
             {
                 throw new InvalidOperationException("Cannot transfer money to the same account.");
@@ -54,7 +69,6 @@
             targetAccount.AddTransaction(new Transaction(amount, $"Transfer from {Owner}"));
         }
 
-
         public void AddTransaction(Transaction transaction)
         {
             transactions.Add(transaction);
@@ -70,6 +84,7 @@
             return PinCode == pin;
         }
     }
+
     public class Transaction
     {
         public DateTime Date { get; private set; }
@@ -85,9 +100,10 @@
 
         public override string ToString()
         {
-            return $"{Date}: {Description}, Сумма: {Amount}";
+            return $"{Date}: {Description}, Amount: {Amount}";
         }
     }
+
     public static class TransactionFilters
     {
         public static List<Transaction> FilterByCurrentDay(List<Transaction> transactions)
@@ -114,13 +130,12 @@
         }
     }
 
-
     public class AutomatedTellerMachine
     {
         public string Name { get; set; }
         public decimal CashAmount { get; private set; }
-        public double Latitude { get; set; } // Широта
-        public double Longitude { get; set; } // Довгота
+        public double Latitude { get; set; } // Latitude
+        public double Longitude { get; set; } // Longitude
 
         public AutomatedTellerMachine(string name, double latitude, double longitude, decimal initialCashAmount)
         {
@@ -142,16 +157,14 @@
             }
         }
 
-        // Функция для перевода градусов в радианы
         private double ToRadians(double degrees)
         {
             return degrees * Math.PI / 180.0;
         }
 
-        // Метод для обчислення відстані між двома банкоматами
         public double CalculateDistance(AutomatedTellerMachine otherATM)
         {
-            const double EARTH_RADIUS = 6371.0; // Радиус Земли в километрах
+            const double EARTH_RADIUS = 6371.0; // Earth radius in kilometers
 
             double lat1 = ToRadians(this.Latitude);
             double lon1 = ToRadians(this.Longitude);
@@ -206,7 +219,6 @@
         public Bank? bank { get; private set; }
         public AutomatedTellerMachine? atm { get; private set; }
 
-        // Список банкоматів (зараз використовуємо клас AutomatedTellerMachine)
         List<AutomatedTellerMachine> atms = new List<AutomatedTellerMachine>
         {
             new AutomatedTellerMachine("ATM 1", 50.4501, 30.5234, 10000),
@@ -239,5 +251,4 @@
             return accounts;
         }
     }
-
 }
