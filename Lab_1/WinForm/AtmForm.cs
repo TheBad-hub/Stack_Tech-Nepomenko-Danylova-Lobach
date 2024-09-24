@@ -28,6 +28,11 @@ namespace WinForm
         {
             Application.Exit();
         }
+
+        private void AtmForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
