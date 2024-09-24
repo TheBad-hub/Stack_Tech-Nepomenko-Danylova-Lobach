@@ -43,26 +43,27 @@ namespace WinForm
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(279, 110);
+            lblBalance.Location = new Point(244, 82);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(78, 20);
+            lblBalance.Size = new Size(61, 15);
             lblBalance.TabIndex = 0;
             lblBalance.Text = "lblBalance";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(280, 66);
+            lblName.Location = new Point(245, 50);
             lblName.Name = "lblName";
-            lblName.Size = new Size(66, 20);
+            lblName.Size = new Size(52, 15);
             lblName.TabIndex = 1;
             lblName.Text = "lblName";
             // 
             // btnWithdraw
             // 
-            btnWithdraw.Location = new Point(43, 156);
+            btnWithdraw.Location = new Point(38, 117);
+            btnWithdraw.Margin = new Padding(3, 2, 3, 2);
             btnWithdraw.Name = "btnWithdraw";
-            btnWithdraw.Size = new Size(94, 29);
+            btnWithdraw.Size = new Size(82, 22);
             btnWithdraw.TabIndex = 2;
             btnWithdraw.Text = "btnWithdraw";
             btnWithdraw.UseVisualStyleBackColor = true;
@@ -70,9 +71,10 @@ namespace WinForm
             // 
             // btnDeposit
             // 
-            btnDeposit.Location = new Point(43, 211);
+            btnDeposit.Location = new Point(38, 158);
+            btnDeposit.Margin = new Padding(3, 2, 3, 2);
             btnDeposit.Name = "btnDeposit";
-            btnDeposit.Size = new Size(94, 29);
+            btnDeposit.Size = new Size(82, 22);
             btnDeposit.TabIndex = 3;
             btnDeposit.Text = "btnDeposit";
             btnDeposit.UseVisualStyleBackColor = true;
@@ -80,9 +82,10 @@ namespace WinForm
             // 
             // btnTransfer
             // 
-            btnTransfer.Location = new Point(43, 274);
+            btnTransfer.Location = new Point(38, 206);
+            btnTransfer.Margin = new Padding(3, 2, 3, 2);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(94, 29);
+            btnTransfer.Size = new Size(82, 22);
             btnTransfer.TabIndex = 4;
             btnTransfer.Text = "btnTransfer";
             btnTransfer.UseVisualStyleBackColor = true;
@@ -90,9 +93,10 @@ namespace WinForm
             // 
             // btnShowNearestATMs
             // 
-            btnShowNearestATMs.Location = new Point(444, 162);
+            btnShowNearestATMs.Location = new Point(388, 117);
+            btnShowNearestATMs.Margin = new Padding(3, 2, 3, 2);
             btnShowNearestATMs.Name = "btnShowNearestATMs";
-            btnShowNearestATMs.Size = new Size(94, 29);
+            btnShowNearestATMs.Size = new Size(82, 22);
             btnShowNearestATMs.TabIndex = 5;
             btnShowNearestATMs.Text = "btnShowNearestATMs";
             btnShowNearestATMs.UseVisualStyleBackColor = true;
@@ -100,9 +104,10 @@ namespace WinForm
             // 
             // btnTransactionHistory
             // 
-            btnTransactionHistory.Location = new Point(452, 248);
+            btnTransactionHistory.Location = new Point(388, 158);
+            btnTransactionHistory.Margin = new Padding(3, 2, 3, 2);
             btnTransactionHistory.Name = "btnTransactionHistory";
-            btnTransactionHistory.Size = new Size(94, 29);
+            btnTransactionHistory.Size = new Size(82, 22);
             btnTransactionHistory.TabIndex = 6;
             btnTransactionHistory.Text = "btnTransactionHistory";
             btnTransactionHistory.UseVisualStyleBackColor = true;
@@ -110,9 +115,9 @@ namespace WinForm
             // 
             // AtmForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(btnTransactionHistory);
             Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);
@@ -120,6 +125,7 @@ namespace WinForm
             Controls.Add(btnWithdraw);
             Controls.Add(lblName);
             Controls.Add(lblBalance);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AtmForm";
             Text = "AtmFormcs";
             ResumeLayout(false);
