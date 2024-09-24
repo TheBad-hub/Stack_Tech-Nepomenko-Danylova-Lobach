@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-        
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransferForm));
             btnConfirmTransfer = new Button();
             txtTargetCardNumber = new TextBox();
             txtTransferAmount = new TextBox();
@@ -35,38 +36,42 @@
             // 
             // btnConfirmTransfer
             // 
-            btnConfirmTransfer.Location = new Point(112, 275);
+            btnConfirmTransfer.BackgroundImage = (Image)resources.GetObject("btnConfirmTransfer.BackgroundImage");
+            btnConfirmTransfer.FlatStyle = FlatStyle.Popup;
+            btnConfirmTransfer.Location = new Point(315, 247);
+            btnConfirmTransfer.Margin = new Padding(3, 2, 3, 2);
             btnConfirmTransfer.Name = "btnConfirmTransfer";
-            btnConfirmTransfer.Size = new Size(94, 29);
+            btnConfirmTransfer.Size = new Size(82, 22);
             btnConfirmTransfer.TabIndex = 0;
-            btnConfirmTransfer.Text = "btnConfirmTransfer";
+            btnConfirmTransfer.Text = "Confirm";
             btnConfirmTransfer.UseVisualStyleBackColor = true;
             btnConfirmTransfer.Click += btnConfirmTransfer_Click;
             // 
             // txtTargetCardNumber
             // 
-            txtTargetCardNumber.Location = new Point(112, 65);
+            txtTargetCardNumber.Location = new Point(301, 103);
+            txtTargetCardNumber.Margin = new Padding(3, 2, 3, 2);
             txtTargetCardNumber.Name = "txtTargetCardNumber";
-            txtTargetCardNumber.Size = new Size(125, 27);
+            txtTargetCardNumber.Size = new Size(110, 23);
             txtTargetCardNumber.TabIndex = 1;
-            txtTargetCardNumber.Text = "txtTargetCardNumber";
             // 
             // txtTransferAmount
             // 
-            txtTransferAmount.Location = new Point(114, 122);
+            txtTransferAmount.Location = new Point(301, 179);
+            txtTransferAmount.Margin = new Padding(3, 2, 3, 2);
             txtTransferAmount.Name = "txtTransferAmount";
-            txtTransferAmount.Size = new Size(125, 27);
+            txtTransferAmount.Size = new Size(110, 23);
             txtTransferAmount.TabIndex = 2;
-            txtTransferAmount.Text = "txtTransferAmount";
             // 
             // TransferForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleMode = AutoScaleMode.None;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(700, 338);
             Controls.Add(txtTransferAmount);
             Controls.Add(txtTargetCardNumber);
             Controls.Add(btnConfirmTransfer);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "TransferForm";
             Text = "TransferForm";
             ResumeLayout(false);
