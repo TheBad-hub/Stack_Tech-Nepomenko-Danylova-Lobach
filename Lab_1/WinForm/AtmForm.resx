@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema
+    Microsoft ResX Schema 
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,7 +121,7 @@
   <data name="btnWithdraw.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAiCAYAAACN1jGgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
+        EAAACxABrSO9dQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
         V2sEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQY
         ZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWvkAcaugfHRwPjg
         6/4CsuQCXldatGoAAAAASUVORK5CYII=
@@ -130,7 +130,7 @@
   <data name="btnDeposit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAiCAYAAACN1jGgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
+        EAAACxABrSO9dQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
         V2sEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQY
         ZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWvkAcaugfHRwPjg
         6/4CsuQCXldatGoAAAAASUVORK5CYII=
@@ -139,7 +139,7 @@
   <data name="btnTransfer.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAiCAYAAACN1jGgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
+        EAAACxABrSO9dQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
         V2sEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQY
         ZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWvkAcaugfHRwPjg
         6/4CsuQCXldatGoAAAAASUVORK5CYII=
@@ -148,7 +148,7 @@
   <data name="btnShowNearestATMs.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAiCAYAAACN1jGgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
+        EAAACxABrSO9dQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
         V2sEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQY
         ZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWvkAcaugfHRwPjg
         6/4CsuQCXldatGoAAAAASUVORK5CYII=
@@ -157,7 +157,7 @@
   <data name="btnTransactionHistory.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAiCAYAAACN1jGgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
+        EAAACxABrSO9dQAAAKlJREFUeF7t0sEJwlAABUHrsi4rSOPx+gLC+u+zsB3M6/25bvvfgfHRwPjoBxjp
         V2sEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQY
         ZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWsEGGVrBBhlawQYZWvkAcaugfHRwPjg
         6/4CsuQCXldatGoAAAAASUVORK5CYII=
@@ -166,7 +166,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA64AAAH2CAYAAABwRNHBAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAA/7JJREFUeF68/ee7Zsd1HnjjjxtK9lxzXR55LCtYohhAkATBCGYCTLI9lv2+DmMR
+        EAAACxABrSO9dQAA/7JJREFUeF68/ee7Zsd1HnjjjxtK9lxzXR55LCtYohhAkATBCGYCTLI9lv2+DmMR
         JEgwASRyRiPn3DnH07nRaHQjkvJ83+99r7XuWqtq7+c5B5T0frivVVX76YM+jzUa/XpV1b7qiR2Hdr5+
         4uK0/cSbk+o4ZnZsZFXGuefSbG0nc/KSx+ZRY74rnlmN+brsPrWQcb3M9zCn30JlYj6M9+I54+s5H7Nv
         GO87c9lrm0f0DNk/y1sLa5kDZxei9agHz16Jui5XrB46dyVT5+Mz5PBCuvXzfT2ieYwzb5f69nQ05kcv

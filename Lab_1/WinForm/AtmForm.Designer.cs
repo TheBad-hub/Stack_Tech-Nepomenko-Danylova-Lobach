@@ -39,6 +39,7 @@ namespace WinForm
             btnTransfer = new Button();
             btnShowNearestATMs = new Button();
             btnTransactionHistory = new Button();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // lblBalance
@@ -142,11 +143,21 @@ namespace WinForm
             btnTransactionHistory.UseVisualStyleBackColor = true;
             btnTransactionHistory.Click += BtnTransactionHistory_Click;
             // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(790, 364);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(75, 23);
+            btnExit.TabIndex = 7;
+            btnExit.Text = "button1";
+            btnExit.UseVisualStyleBackColor = true;
+            // 
             // AtmForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(940, 463);
+            Controls.Add(btnExit);
             Controls.Add(btnTransactionHistory);
             Controls.Add(btnShowNearestATMs);
             Controls.Add(btnTransfer);
@@ -223,5 +234,6 @@ namespace WinForm
 
         private Button btnShowNearestATMs;
         private Button btnTransactionHistory;
+        private Button btnExit;
     }
 }
