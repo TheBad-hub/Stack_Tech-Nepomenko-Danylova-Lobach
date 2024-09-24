@@ -70,7 +70,6 @@
             if (decimal.TryParse(txtDepositAmount.Text, out amount))
             {
                 currentAccount.Deposit(amount);
-                currentAccount.AddTransaction($"Зараховано {amount:C}");
                 MessageBox.Show($"Ви зарахували {amount:C}. Ваш баланс: {currentAccount.Balance:C}");
                 this.Close();
             }

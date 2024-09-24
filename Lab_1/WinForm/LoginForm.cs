@@ -7,13 +7,15 @@ namespace WinForm
     {
         private readonly Dictionary<string, Account>? accounts; 
         private Account? currentAccount;  
-        private readonly AutomatedTellerMachine atm;  
+        private readonly AutomatedTellerMachine? atm;
+        BankInitializer? initializer;
 
-        public LoginForm(Dictionary<string, Account> accounts, AutomatedTellerMachine atm)
+        public LoginForm(BankInitializer bankInitializer)
         {
             InitializeComponent();
-            this.accounts = accounts;
-            this.atm = atm;  
+            this.accounts = bankInitializer.GetAccounts();
+            this.atm = bankInitializer.atm;
+            initializer = bankInitializer;
         }
     }
 }

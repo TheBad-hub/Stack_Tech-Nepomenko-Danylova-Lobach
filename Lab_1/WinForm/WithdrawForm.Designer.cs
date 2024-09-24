@@ -73,7 +73,6 @@
                 if (currentAccount.Balance >= amount)
                 {
                     currentAccount.Withdraw(amount);
-                    currentAccount.AddTransaction($"Снято {amount:C}");
                     MessageBox.Show($"Ви зняли {amount:C}. Ваш баланс: {currentAccount.Balance:C}");
                     this.Close();
                 }
