@@ -17,5 +17,10 @@ namespace WinForm
                 lstNearestAtms.Items.Add($"{atm.Name} - {atm.Latitude}, {atm.Longitude}; Distance: {distance:F2} km");
             }
         }
+
+        private void NearestAtmsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
