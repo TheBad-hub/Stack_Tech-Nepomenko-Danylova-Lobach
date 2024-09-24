@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NearestAtmsForm));
             lstNearestAtms = new ListBox();
             SuspendLayout();
             // 
@@ -44,11 +45,13 @@
             // NearestAtmsForm
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(700, 338);
             Controls.Add(lstNearestAtms);
             Margin = new Padding(3, 2, 3, 2);
             Name = "NearestAtmsForm";
             Text = "NearestAtmsForm";
+            Load += NearestAtmsForm_Load;
             ResumeLayout(false);
         }
 

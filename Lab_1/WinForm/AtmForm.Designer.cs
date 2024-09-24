@@ -145,11 +145,14 @@ namespace WinForm
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(790, 364);
+            btnExit.BackgroundImage = (Image)resources.GetObject("btnExit.BackgroundImage");
+            btnExit.FlatStyle = FlatStyle.Popup;
+            btnExit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnExit.Location = new Point(790, 358);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
+            btnExit.Size = new Size(140, 34);
             btnExit.TabIndex = 7;
-            btnExit.Text = "button1";
+            btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             // 
             // AtmForm
