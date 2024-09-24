@@ -30,6 +30,7 @@ namespace WinForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             txtCardNumber = new TextBox();
             txtPinCode = new TextBox();
             btnLogin = new Button();
@@ -37,38 +38,44 @@ namespace WinForm
             // 
             // txtCardNumber
             // 
-            txtCardNumber.Location = new Point(128, 171);
+            txtCardNumber.Location = new Point(303, 103);
+            txtCardNumber.Margin = new Padding(3, 2, 3, 2);
             txtCardNumber.Name = "txtCardNumber";
-            txtCardNumber.Size = new Size(125, 27);
+            txtCardNumber.Size = new Size(110, 23);
             txtCardNumber.TabIndex = 0;
-            txtCardNumber.Text = "txtCardNumber";
             // 
             // txtPinCode
             // 
-            txtPinCode.Location = new Point(128, 222);
+            txtPinCode.Location = new Point(303, 179);
+            txtPinCode.Margin = new Padding(3, 2, 3, 2);
             txtPinCode.Name = "txtPinCode";
-            txtPinCode.Size = new Size(125, 27);
+            txtPinCode.Size = new Size(110, 23);
             txtPinCode.TabIndex = 1;
-            txtPinCode.Text = "txtPinCode";
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(128, 267);
+            btnLogin.BackgroundImage = (Image)resources.GetObject("btnLogin.BackgroundImage");
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Popup;
+            btnLogin.Location = new Point(317, 247);
+            btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(94, 29);
+            btnLogin.Size = new Size(82, 26);
             btnLogin.TabIndex = 2;
-            btnLogin.Text = "btnLogin";
+            btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(700, 338);
             Controls.Add(btnLogin);
             Controls.Add(txtPinCode);
             Controls.Add(txtCardNumber);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "LoginForm";
             Text = "Login";
             ResumeLayout(false);

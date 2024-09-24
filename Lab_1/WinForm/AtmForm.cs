@@ -15,7 +15,7 @@ namespace WinForm
             currentAccount = account;
             this.bank = initializer.bank;
             this.atm = initializer.atm;
-
+            accounts = initializer.GetAccounts();
 
             // Оновлюємо інформацію на формі
             UpdateNameInfo();
@@ -27,6 +27,11 @@ namespace WinForm
         private void AtmForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+        // test
+        private void AtmForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
