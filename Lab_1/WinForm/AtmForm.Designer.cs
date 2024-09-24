@@ -151,6 +151,7 @@ namespace WinForm
             btnExit.TabIndex = 7;
             btnExit.Text = "button1";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // AtmForm
             // 
@@ -235,5 +236,11 @@ namespace WinForm
         private Button btnShowNearestATMs;
         private Button btnTransactionHistory;
         private Button btnExit;
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm(new BankInitializer(this.bank, this.atm, accounts));
+            loginForm.Show();
+        }
     }
 }
