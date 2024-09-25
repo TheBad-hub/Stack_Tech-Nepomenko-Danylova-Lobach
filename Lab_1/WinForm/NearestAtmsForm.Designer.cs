@@ -36,17 +36,17 @@
             // 
             lstNearestAtms.FormattingEnabled = true;
             lstNearestAtms.ItemHeight = 15;
-            lstNearestAtms.Location = new Point(196, 45);
+            lstNearestAtms.Location = new Point(169, 60);
             lstNearestAtms.Margin = new Padding(3, 2, 3, 2);
             lstNearestAtms.Name = "lstNearestAtms";
-            lstNearestAtms.Size = new Size(307, 214);
+            lstNearestAtms.Size = new Size(370, 259);
             lstNearestAtms.TabIndex = 0;
             // 
             // NearestAtmsForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(702, 369);
             Controls.Add(lstNearestAtms);
             Margin = new Padding(3, 2, 3, 2);
             Name = "NearestAtmsForm";
