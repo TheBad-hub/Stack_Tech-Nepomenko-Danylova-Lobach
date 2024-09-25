@@ -45,7 +45,8 @@ namespace WinForm
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(438, 79);
+            lblBalance.BackColor = Color.White;
+            lblBalance.Location = new Point(359, 259);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(61, 15);
             lblBalance.TabIndex = 0;
@@ -54,8 +55,8 @@ namespace WinForm
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.BackColor = SystemColors.Control;
-            lblName.Location = new Point(449, 49);
+            lblName.BackColor = Color.White;
+            lblName.Location = new Point(359, 196);
             lblName.Name = "lblName";
             lblName.Size = new Size(52, 15);
             lblName.TabIndex = 1;
