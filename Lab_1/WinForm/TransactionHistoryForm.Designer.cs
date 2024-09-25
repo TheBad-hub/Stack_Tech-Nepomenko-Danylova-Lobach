@@ -49,18 +49,17 @@ namespace WinForm
             // 
             lstTransactions.FormattingEnabled = true;
             lstTransactions.ItemHeight = 15;
-            lstTransactions.Location = new Point(146, 110);
+            lstTransactions.Location = new Point(130, 110);
             lstTransactions.Margin = new Padding(3, 2, 3, 2);
             lstTransactions.Name = "lstTransactions";
-            lstTransactions.Size = new Size(423, 79);
+            lstTransactions.Size = new Size(442, 79);
             lstTransactions.TabIndex = 1;
             // 
             // TransactionHistoryForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(700, 360);
+            ClientSize = new Size(716, 377);
             Controls.Add(lstTransactions);
             Controls.Add(cmbFilter);
             Margin = new Padding(3, 2, 3, 2);
