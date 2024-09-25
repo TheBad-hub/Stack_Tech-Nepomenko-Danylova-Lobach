@@ -122,20 +122,21 @@
         public static List<Transaction> FilterByCurrentWeek(List<Transaction> transactions)
         {
             var now = DateTime.Now;
-            var startOfWeek = now.AddDays(-(int)now.DayOfWeek + (int)DayOfWeek.Monday);
+            var startOfWeek = now.AddDays(-7);
 
             return transactions
-                .Where(t => t.Date >= startOfWeek && t.Date <= now)
+                .Where(t => t.Date >= startOfWeek && t.Date <= now) 
                 .ToList();
         }
+
 
         public static List<Transaction> FilterByCurrentMonth(List<Transaction> transactions)
         {
             var now = DateTime.Now;
-            var startOfMonth = new DateTime(now.Year, now.Month, 1);
+            var startOfMonth = new DateTime(now.Year, now.Month, 1); 
 
             return transactions
-                .Where(t => t.Date >= startOfMonth && t.Date <= now)
+                .Where(t => t.Date >= startOfMonth && t.Date <= now) 
                 .ToList();
         }
     }
