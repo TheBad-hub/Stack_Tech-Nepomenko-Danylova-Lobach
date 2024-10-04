@@ -39,20 +39,20 @@ namespace WinForm
             // cmbFilter
             // 
             cmbFilter.FormattingEnabled = true;
-            cmbFilter.Location = new Point(291, 265);
+            cmbFilter.Location = new Point(250, 247);
             cmbFilter.Margin = new Padding(3, 2, 3, 2);
             cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new Size(133, 23);
+            cmbFilter.Size = new Size(215, 23);
             cmbFilter.TabIndex = 0;
             // 
             // lstTransactions
             // 
             lstTransactions.FormattingEnabled = true;
             lstTransactions.ItemHeight = 15;
-            lstTransactions.Location = new Point(130, 110);
+            lstTransactions.Location = new Point(105, 76);
             lstTransactions.Margin = new Padding(3, 2, 3, 2);
             lstTransactions.Name = "lstTransactions";
-            lstTransactions.Size = new Size(442, 79);
+            lstTransactions.Size = new Size(501, 79);
             lstTransactions.TabIndex = 1;
             // 
             // TransactionHistoryForm

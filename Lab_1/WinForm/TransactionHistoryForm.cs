@@ -26,8 +26,6 @@ namespace WinForm
 
             // Подписка на событие изменения фильтра
             cmbFilter.SelectedIndexChanged += CmbFilter_SelectedIndexChanged;
-
-            UpdateTransactionHistory(transactions);
         }
     }
 }

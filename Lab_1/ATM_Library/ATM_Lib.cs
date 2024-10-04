@@ -97,6 +97,12 @@
             Amount = amount;
             Description = description;
         }
+        public Transaction(DateTime date,decimal amount, string description)
+        {
+            Amount = amount;
+            Description = description;
+            Date = date; 
+        }
 
         public override string ToString()
         {
@@ -115,17 +121,22 @@
 
         public static List<Transaction> FilterByCurrentWeek(List<Transaction> transactions)
         {
-            var startOfWeek = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek + 1); // Monday
+            var now = DateTime.Now;
+            var startOfWeek = now.AddDays(-7);
+
             return transactions
-                .Where(t => t.Date >= startOfWeek && t.Date <= DateTime.Now)
+                .Where(t => t.Date >= startOfWeek && t.Date <= now) 
                 .ToList();
         }
 
+
         public static List<Transaction> FilterByCurrentMonth(List<Transaction> transactions)
         {
-            var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var now = DateTime.Now;
+            var startOfMonth = new DateTime(now.Year, now.Month, 1); 
+
             return transactions
-                .Where(t => t.Date >= startOfMonth && t.Date <= DateTime.Now)
+                .Where(t => t.Date >= startOfMonth && t.Date <= now) 
                 .ToList();
         }
     }
@@ -262,8 +273,18 @@
             accounts = new Dictionary<string, Account>
             {
                 { "0123456789", new Account("0123456789", "Harry Potter", 5000, "1234") },
-                { "9876543210", new Account("9876543210", "Jack Napier a.k.a. Joker", 3000, "4321") }
+                { "9876543210", new Account("9876543210", "Jack Napier (Joker)", 3000, "4321") }
             };
+
+            // Add transactions for Harry Potter
+            var harryAccount = accounts["0123456789"];
+            harryAccount.AddTransaction(new Transaction(new DateTime(2024, 9, 23), -100, "Withdrawal on 21/09"));
+            harryAccount.AddTransaction(new Transaction(new DateTime(2024, 9, 5), 200, "Deposit on 05/09"));
+
+            // Add transactions for Joker
+            var jokerAccount = accounts["9876543210"];
+            jokerAccount.AddTransaction(new Transaction(new DateTime(2024, 9, 23), -50, "Withdrawal on 21/09"));
+            jokerAccount.AddTransaction(new Transaction(new DateTime(2024, 9, 5), 150, "Deposit on 05/09"));
 
             return accounts;
         }
