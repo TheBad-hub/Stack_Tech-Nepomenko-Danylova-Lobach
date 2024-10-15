@@ -81,7 +81,7 @@ namespace Lab_2
             Console.WriteLine("Елементи масиву C:");
             foreach (var item in C)
             {
-                Console.Write($"{item} ");
+                Console.Write($"{item}, ");
             }
             Console.WriteLine("\n");
             Console.WriteLine("Відтінки зеленого в масиві C:");
