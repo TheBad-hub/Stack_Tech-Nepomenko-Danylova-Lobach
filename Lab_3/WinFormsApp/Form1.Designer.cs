@@ -62,22 +62,22 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { policemenToolStripMenuItem, offendersToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(1071, 24);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(1071, 25);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
             // policemenToolStripMenuItem
             // 
             policemenToolStripMenuItem.Name = "policemenToolStripMenuItem";
-            policemenToolStripMenuItem.Size = new Size(75, 20);
+            policemenToolStripMenuItem.Size = new Size(75, 19);
             policemenToolStripMenuItem.Text = "Policemen";
             policemenToolStripMenuItem.Click += policemenToolStripMenuItem_Click;
             // 
             // offendersToolStripMenuItem
             // 
             offendersToolStripMenuItem.Name = "offendersToolStripMenuItem";
-            offendersToolStripMenuItem.Size = new Size(71, 20);
+            offendersToolStripMenuItem.Size = new Size(71, 19);
             offendersToolStripMenuItem.Text = "Offenders";
             offendersToolStripMenuItem.Click += offendersToolStripMenuItem_Click;
             // 
@@ -86,7 +86,6 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
             dataGridView1.Location = new Point(32, 51);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -117,10 +116,9 @@
             // 
             // button_Add
             // 
-            button_Add.Location = new Point(846, 434);
-            button_Add.Margin = new Padding(3, 2, 3, 2);
+            button_Add.Location = new Point(967, 579);
             button_Add.Name = "button_Add";
-            button_Add.Size = new Size(170, 22);
+            button_Add.Size = new Size(194, 29);
             button_Add.TabIndex = 2;
             button_Add.Text = "ADD";
             button_Add.UseVisualStyleBackColor = true;
@@ -129,7 +127,7 @@
             // labelFirstName
             // 
             labelFirstName.AutoSize = true;
-            labelFirstName.Location = new Point(842, 90);
+            labelFirstName.Location = new Point(962, 120);
             labelFirstName.Name = "labelFirstName";
             labelFirstName.Size = new Size(61, 15);
             labelFirstName.TabIndex = 6;
@@ -138,7 +136,7 @@
             // labelLastName
             // 
             labelLastName.AutoSize = true;
-            labelLastName.Location = new Point(842, 127);
+            labelLastName.Location = new Point(962, 169);
             labelLastName.Name = "labelLastName";
             labelLastName.Size = new Size(60, 15);
             labelLastName.TabIndex = 7;
@@ -147,7 +145,7 @@
             // labelBadgeNumber
             // 
             labelBadgeNumber.AutoSize = true;
-            labelBadgeNumber.Location = new Point(831, 162);
+            labelBadgeNumber.Location = new Point(950, 216);
             labelBadgeNumber.Name = "labelBadgeNumber";
             labelBadgeNumber.Size = new Size(84, 15);
             labelBadgeNumber.TabIndex = 8;
@@ -156,7 +154,7 @@
             // labelViolationType
             // 
             labelViolationType.AutoSize = true;
-            labelViolationType.Location = new Point(958, 127);
+            labelViolationType.Location = new Point(1095, 169);
             labelViolationType.Name = "labelViolationType";
             labelViolationType.Size = new Size(78, 15);
             labelViolationType.TabIndex = 9;
@@ -164,35 +162,32 @@
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.Location = new Point(815, 311);
-            textBoxFirstName.Margin = new Padding(3, 2, 3, 2);
+            textBoxFirstName.Location = new Point(931, 415);
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.PlaceholderText = "FirstName";
-            textBoxFirstName.Size = new Size(110, 23);
+            textBoxFirstName.Size = new Size(125, 23);
             textBoxFirstName.TabIndex = 10;
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(815, 350);
-            textBoxLastName.Margin = new Padding(3, 2, 3, 2);
+            textBoxLastName.Location = new Point(931, 467);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.PlaceholderText = "LastName";
-            textBoxLastName.Size = new Size(110, 23);
+            textBoxLastName.Size = new Size(125, 23);
             textBoxLastName.TabIndex = 11;
             // 
             // textBoxBadgeNumber
             // 
-            textBoxBadgeNumber.Location = new Point(815, 390);
-            textBoxBadgeNumber.Margin = new Padding(3, 2, 3, 2);
+            textBoxBadgeNumber.Location = new Point(931, 520);
             textBoxBadgeNumber.Name = "textBoxBadgeNumber";
             textBoxBadgeNumber.PlaceholderText = "BadgeNumber";
-            textBoxBadgeNumber.Size = new Size(110, 23);
+            textBoxBadgeNumber.Size = new Size(125, 23);
             textBoxBadgeNumber.TabIndex = 12;
             // 
             // labelPolicemanId
             // 
             labelPolicemanId.AutoSize = true;
-            labelPolicemanId.Location = new Point(958, 90);
+            labelPolicemanId.Location = new Point(1095, 120);
             labelPolicemanId.Name = "labelPolicemanId";
             labelPolicemanId.Size = new Size(73, 15);
             labelPolicemanId.TabIndex = 13;
@@ -200,26 +195,23 @@
             // 
             // textBoxViolationType
             // 
-            textBoxViolationType.Location = new Point(937, 311);
-            textBoxViolationType.Margin = new Padding(3, 2, 3, 2);
+            textBoxViolationType.Location = new Point(1071, 415);
             textBoxViolationType.Name = "textBoxViolationType";
             textBoxViolationType.PlaceholderText = "ViolationType";
-            textBoxViolationType.Size = new Size(110, 23);
+            textBoxViolationType.Size = new Size(125, 23);
             textBoxViolationType.TabIndex = 14;
             // 
             // textBoxPolicemanId
             // 
-            textBoxPolicemanId.Location = new Point(937, 350);
-            textBoxPolicemanId.Margin = new Padding(3, 2, 3, 2);
+            textBoxPolicemanId.Location = new Point(1071, 467);
             textBoxPolicemanId.Name = "textBoxPolicemanId";
             textBoxPolicemanId.PlaceholderText = "PolicemanId";
-            textBoxPolicemanId.Size = new Size(110, 23);
+            textBoxPolicemanId.Size = new Size(125, 23);
             textBoxPolicemanId.TabIndex = 15;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1071, 503);
             Controls.Add(textBoxPolicemanId);
@@ -236,9 +228,9 @@
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Police department";
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
