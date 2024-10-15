@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Linq;
 
 public class Policeman
 {
@@ -6,7 +8,6 @@ public class Policeman
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string BadgeNumber { get; set; }
-    // Зв'язок "один до багатьох" - один поліцейський може затримати багато порушників
     public ICollection<Offender> Offenders { get; set; }
 }
 
@@ -16,13 +17,10 @@ public class Offender
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string ViolationType { get; set; }
-    // Зовнішній ключ на поліцейського
     public int PolicemanId { get; set; }
     public Policeman Policeman { get; set; }
-    // Властивість для повного імені поліцейського
     public string PolicemanFullName => Policeman != null ? $"{Policeman.FirstName} {Policeman.LastName}" : "No Policeman";
 }
-
 
 public class PoliceContext : DbContext
 {
@@ -39,9 +37,44 @@ public class Program
 {
     public static void Main()
     {
+        Console.OutputEncoding = Encoding.UTF8;
         using (var context = new PoliceContext())
         {
             context.Database.EnsureCreated();
+
+            DisplayPolicemen(context);
+            DisplayOffenders(context);
         }
+    }
+
+    private static void DisplayPolicemen(PoliceContext context)
+    {
+        var policemen = context.Policemen.Include(p => p.Offenders).ToList();
+        Console.WriteLine("Поліцейські:");
+        foreach (var policeman in policemen)
+        {
+            Console.WriteLine($"ID: {policeman.PolicemanId}, Ім'я: {policeman.FirstName}, Прізвище: {policeman.LastName}, Номер значка: {policeman.BadgeNumber}, Правопорушники: {FormatOffenders(policeman.Offenders)}");
+        }
+        Console.WriteLine();
+    }
+
+    private static void DisplayOffenders(PoliceContext context)
+    {
+        var offenders = context.Offenders.Include(o => o.Policeman).ToList();
+        Console.WriteLine("Порушники:");
+        foreach (var offender in offenders)
+        {
+            Console.WriteLine($"ID: {offender.OffenderId}, Ім'я: {offender.FirstName}, Прізвище: {offender.LastName}, Тип порушення: {offender.ViolationType}, Поліцейський: {offender.PolicemanFullName}");
+        }
+    }
+
+    private static string FormatOffenders(ICollection<Offender> offenders)
+    {
+        if (offenders == null || offenders.Count == 0)
+        {
+            return "Немає правопорушників";
+        }
+
+        return string.Join(", ", offenders.Select(o => $"{o.FirstName} {o.LastName} ({o.ViolationType})"));
     }
 }
