@@ -118,9 +118,10 @@
             // 
             // button_Add
             // 
+            button_Add.AutoSize = true;
             button_Add.Location = new Point(846, 434);
             button_Add.Name = "button_Add";
-            button_Add.Size = new Size(170, 22);
+            button_Add.Size = new Size(170, 25);
             button_Add.TabIndex = 2;
             button_Add.Text = "ADD";
             button_Add.UseVisualStyleBackColor = true;
@@ -130,7 +131,7 @@
             // 
             labelFirstName.AutoSize = true;
             labelFirstName.BackColor = Color.Transparent;
-            labelFirstName.Location = new Point(842, 90);
+            labelFirstName.Location = new Point(822, 90);
             labelFirstName.Name = "labelFirstName";
             labelFirstName.Size = new Size(64, 15);
             labelFirstName.TabIndex = 6;
@@ -140,7 +141,7 @@
             // 
             labelLastName.AutoSize = true;
             labelLastName.BackColor = Color.Transparent;
-            labelLastName.Location = new Point(842, 127);
+            labelLastName.Location = new Point(823, 127);
             labelLastName.Name = "labelLastName";
             labelLastName.Size = new Size(63, 15);
             labelLastName.TabIndex = 7;
@@ -150,7 +151,7 @@
             // 
             labelBadgeNumber.AutoSize = true;
             labelBadgeNumber.BackColor = Color.Transparent;
-            labelBadgeNumber.Location = new Point(831, 162);
+            labelBadgeNumber.Location = new Point(822, 162);
             labelBadgeNumber.Name = "labelBadgeNumber";
             labelBadgeNumber.Size = new Size(87, 15);
             labelBadgeNumber.TabIndex = 8;
@@ -160,7 +161,7 @@
             // 
             labelViolationType.AutoSize = true;
             labelViolationType.BackColor = Color.Transparent;
-            labelViolationType.Location = new Point(950, 127);
+            labelViolationType.Location = new Point(934, 127);
             labelViolationType.Name = "labelViolationType";
             labelViolationType.Size = new Size(81, 15);
             labelViolationType.TabIndex = 9;
@@ -194,7 +195,7 @@
             // 
             labelPolicemanId.AutoSize = true;
             labelPolicemanId.BackColor = Color.Transparent;
-            labelPolicemanId.Location = new Point(955, 90);
+            labelPolicemanId.Location = new Point(934, 90);
             labelPolicemanId.Name = "labelPolicemanId";
             labelPolicemanId.Size = new Size(73, 15);
             labelPolicemanId.TabIndex = 13;
