@@ -310,11 +310,28 @@
             }
         }
 
+        private void cleaning_TextBoxes()
+        {
+            textBoxFirstName.Text = "";
+            textBoxLastName.Text = "";
+            textBoxBadgeNumber.Text = "";
+            textBoxViolationType.Text = "";
+            textBoxPolicemanId.Text = "";
+        }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             // Перевіряємо, чи є джерело даних списком поліцейських
             if (textBoxBadgeNumber.Visible)
             {
+                // Проверка на пустые поля
+                if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxBadgeNumber.Text))
+                {
+                    MessageBox.Show("Будь ласка, заповніть усі поля поліцейського.");
+                    return; // Завершаем метод, если поля не заполнены
+                }
+
                 var newPoliceman = new Policeman
                 {
                     FirstName = textBoxFirstName.Text,
@@ -325,9 +342,20 @@
                 context.Policemen.Add(newPoliceman);
                 context.SaveChanges();
                 LoadData("Policemen");
+                cleaning_TextBoxes();
             }
             else if (textBoxViolationType.Visible && textBoxPolicemanId.Visible)
             {
+                // Перевірка на пусті поля
+                if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxViolationType.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxPolicemanId.Text))
+                {
+                    MessageBox.Show("Будь ласка, заповніть усі поля порушника.");
+                    return; // Завершаем метод, если поля не заполнены
+                }
+
                 // Перевіряємо введений ID поліцейського
                 if (int.TryParse(textBoxPolicemanId.Text, out int policemanId))
                 {
@@ -346,6 +374,7 @@
                         context.Offenders.Add(newOffender);
                         context.SaveChanges();
                         LoadData("Offenders");
+                        cleaning_TextBoxes();
                     }
                     else
                     {
