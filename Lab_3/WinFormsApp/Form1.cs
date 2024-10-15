@@ -8,6 +8,8 @@ namespace WinFormsApp
         {
             InitializeComponent();
             context = new PoliceContext();
+            LoadData("Policemen");
+            ToggleInputFields("Policemen");
         }
     }
 }

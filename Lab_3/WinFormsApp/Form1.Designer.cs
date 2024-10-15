@@ -244,16 +244,158 @@
         private Button button_Add;
         private void LoadData(string table)
         {
+            if (table == "Policemen")
+            {
+                var policemen = context.Policemen.ToList();
+                dataGridView1.DataSource = policemen;
+            }
+            else if (table == "Offenders")
+            {
+                var offenders = context.Offenders
+                    .Include(o => o.Policeman)
+                    .ToList();
+                // Створюємо список, щоб зберігати інформацію для відображення
+                var displayOffenders = offenders.Select(o => new
+                {
+                    o.OffenderId,
+                    o.FirstName,
+                    o.LastName,
+                    o.ViolationType,
+                    PolicemanFullName = $"{o.Policeman.FirstName} {o.Policeman.LastName}"
+                }).ToList();
 
+                dataGridView1.DataSource = displayOffenders;
+
+                // Прибираємо колонку Policeman
+                if (dataGridView1.Columns.Contains("Policeman"))
+                {
+                    dataGridView1.Columns["Policeman"].Visible = false;
+                }
+            }
         }
+
         private void ToggleInputFields(string table)
         {
+            // Приховуємо або показуємо елементи керування залежно від вибраної таблиці
+            if (table == "Policemen")
+            {
+                labelFirstName.Visible = true;
+                labelLastName.Visible = true;
+                labelBadgeNumber.Visible = true;
+
+                labelViolationType.Visible = false;
+                labelPolicemanId.Visible = false;
+
+                textBoxBadgeNumber.Visible = true;
+                textBoxFirstName.Visible = true;
+                textBoxLastName.Visible = true;
+
+                textBoxViolationType.Visible = false;
+                textBoxPolicemanId.Visible = false;
+            }
+            else if (table == "Offenders")
+            {
+                labelBadgeNumber.Visible = false;
+                labelFirstName.Visible = true;
+                labelLastName.Visible = true;
+                labelViolationType.Visible = true;
+                labelPolicemanId.Visible = true;
+
+                textBoxViolationType.Visible = true;
+                textBoxPolicemanId.Visible = true;
+
+                textBoxBadgeNumber.Visible = false;
+                textBoxFirstName.Visible = true;
+                textBoxLastName.Visible = true;
+            }
         }
-        private void deleteToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-        }
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            // Перевіряємо, чи є джерело даних списком поліцейських
+            if (textBoxBadgeNumber.Visible)
+            {
+                var newPoliceman = new Policeman
+                {
+                    FirstName = textBoxFirstName.Text,
+                    LastName = textBoxLastName.Text,
+                    BadgeNumber = textBoxBadgeNumber.Text
+                };
+
+                context.Policemen.Add(newPoliceman);
+                context.SaveChanges();
+                LoadData("Policemen");
+            }
+            else if (textBoxViolationType.Visible && textBoxPolicemanId.Visible)
+            {
+                // Перевіряємо введений ID поліцейського
+                if (int.TryParse(textBoxPolicemanId.Text, out int policemanId))
+                {
+                    // Перевіряємо, чи є поліцейський з таким ID
+                    var existingPoliceman = context.Policemen.Find(policemanId);
+                    if (existingPoliceman != null)
+                    {
+                        var newOffender = new Offender
+                        {
+                            FirstName = textBoxFirstName.Text,
+                            LastName = textBoxLastName.Text,
+                            ViolationType = textBoxViolationType.Text,
+                            PolicemanId = existingPoliceman.PolicemanId
+                        };
+
+                        context.Offenders.Add(newOffender);
+                        context.SaveChanges();
+                        LoadData("Offenders");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Поліцейський із зазначеним ID не знайдено.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Неправильний ID поліцейського. Будь ласка, введіть ціле число.");
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // Отримуємо індекс обраного рядка
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedRow = dataGridView1.SelectedCells[0].RowIndex;
+                // Підтвердження видалення
+                DialogResult dr = MessageBox.Show("Видалити вибрану запис?", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (dataGridView1.DataSource is List<Policeman>)
+                        {
+                            var selectedPoliceman = (Policeman)dataGridView1.Rows[selectedRow].DataBoundItem;
+                            context.Policemen.Remove(selectedPoliceman);
+                            context.SaveChanges();
+                            LoadData("Policemen");
+                        }
+                        else if (dataGridView1.DataSource is List<Offender>)
+                        {
+                            var selectedOffender = (Offender)dataGridView1.Rows[selectedRow].DataBoundItem;
+                            context.Offenders.Remove(selectedOffender);
+                            context.SaveChanges();
+                            LoadData("Offenders");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка при удалении: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.");
+            }
         }
         private void policemenToolStripMenuItem_Click(object sender, EventArgs e)
         {
