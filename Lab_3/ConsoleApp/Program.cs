@@ -8,7 +8,7 @@ public class Policeman
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string BadgeNumber { get; set; }
-    public ICollection<Offender> Offenders { get; set; }
+    public virtual ICollection<Offender> Offenders { get; set; }
 }
 
 public class Offender
@@ -18,7 +18,7 @@ public class Offender
     public string LastName { get; set; }
     public string ViolationType { get; set; }
     public int PolicemanId { get; set; }
-    public Policeman Policeman { get; set; }
+    public virtual Policeman Policeman { get; set; }
     public string PolicemanFullName => Policeman != null ? $"{Policeman.FirstName} {Policeman.LastName}" : "No Policeman";
 }
 
@@ -29,7 +29,9 @@ public class PoliceContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PoliceDB;Trusted_Connection=True;");
+        optionsBuilder
+            .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PoliceDB;Trusted_Connection=True;")
+            .UseLazyLoadingProxies();
     }
 }
 
@@ -49,7 +51,7 @@ public class Program
 
     private static void DisplayPolicemen(PoliceContext context)
     {
-        var policemen = context.Policemen.Include(p => p.Offenders).ToList();
+        var policemen = context.Policemen.ToList(); // Лениво загружает правопорушників при доступе
         Console.WriteLine("Поліцейські:");
         foreach (var policeman in policemen)
         {
@@ -60,7 +62,7 @@ public class Program
 
     private static void DisplayOffenders(PoliceContext context)
     {
-        var offenders = context.Offenders.Include(o => o.Policeman).ToList();
+        var offenders = context.Offenders.ToList(); // Лениво загружает поліцейських при доступе
         Console.WriteLine("Порушники:");
         foreach (var offender in offenders)
         {
