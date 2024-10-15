@@ -69,6 +69,7 @@
             // 
             // policemenToolStripMenuItem
             // 
+            policemenToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
             policemenToolStripMenuItem.Name = "policemenToolStripMenuItem";
             policemenToolStripMenuItem.Size = new Size(75, 19);
             policemenToolStripMenuItem.Text = "Policemen";
@@ -76,6 +77,7 @@
             // 
             // offendersToolStripMenuItem
             // 
+            offendersToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
             offendersToolStripMenuItem.Name = "offendersToolStripMenuItem";
             offendersToolStripMenuItem.Size = new Size(71, 19);
             offendersToolStripMenuItem.Text = "Offenders";
@@ -116,9 +118,9 @@
             // 
             // button_Add
             // 
-            button_Add.Location = new Point(967, 579);
+            button_Add.Location = new Point(846, 434);
             button_Add.Name = "button_Add";
-            button_Add.Size = new Size(194, 29);
+            button_Add.Size = new Size(170, 22);
             button_Add.TabIndex = 2;
             button_Add.Text = "ADD";
             button_Add.UseVisualStyleBackColor = true;
@@ -127,67 +129,72 @@
             // labelFirstName
             // 
             labelFirstName.AutoSize = true;
-            labelFirstName.Location = new Point(962, 120);
+            labelFirstName.BackColor = Color.Transparent;
+            labelFirstName.Location = new Point(842, 90);
             labelFirstName.Name = "labelFirstName";
-            labelFirstName.Size = new Size(61, 15);
+            labelFirstName.Size = new Size(64, 15);
             labelFirstName.TabIndex = 6;
-            labelFirstName.Text = "FirstName";
+            labelFirstName.Text = "First Name";
             // 
             // labelLastName
             // 
             labelLastName.AutoSize = true;
-            labelLastName.Location = new Point(962, 169);
+            labelLastName.BackColor = Color.Transparent;
+            labelLastName.Location = new Point(842, 127);
             labelLastName.Name = "labelLastName";
-            labelLastName.Size = new Size(60, 15);
+            labelLastName.Size = new Size(63, 15);
             labelLastName.TabIndex = 7;
-            labelLastName.Text = "LastName";
+            labelLastName.Text = "Last Name";
             // 
             // labelBadgeNumber
             // 
             labelBadgeNumber.AutoSize = true;
-            labelBadgeNumber.Location = new Point(950, 216);
+            labelBadgeNumber.BackColor = Color.Transparent;
+            labelBadgeNumber.Location = new Point(831, 162);
             labelBadgeNumber.Name = "labelBadgeNumber";
-            labelBadgeNumber.Size = new Size(84, 15);
+            labelBadgeNumber.Size = new Size(87, 15);
             labelBadgeNumber.TabIndex = 8;
-            labelBadgeNumber.Text = "BadgeNumber";
+            labelBadgeNumber.Text = "Badge Number";
             // 
             // labelViolationType
             // 
             labelViolationType.AutoSize = true;
-            labelViolationType.Location = new Point(1095, 169);
+            labelViolationType.BackColor = Color.Transparent;
+            labelViolationType.Location = new Point(950, 127);
             labelViolationType.Name = "labelViolationType";
-            labelViolationType.Size = new Size(78, 15);
+            labelViolationType.Size = new Size(81, 15);
             labelViolationType.TabIndex = 9;
-            labelViolationType.Text = "ViolationType";
+            labelViolationType.Text = "Violation Type";
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.Location = new Point(931, 415);
+            textBoxFirstName.Location = new Point(815, 311);
             textBoxFirstName.Name = "textBoxFirstName";
-            textBoxFirstName.PlaceholderText = "FirstName";
-            textBoxFirstName.Size = new Size(125, 23);
+            textBoxFirstName.PlaceholderText = "First Name";
+            textBoxFirstName.Size = new Size(110, 23);
             textBoxFirstName.TabIndex = 10;
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(931, 467);
+            textBoxLastName.Location = new Point(815, 350);
             textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.PlaceholderText = "LastName";
-            textBoxLastName.Size = new Size(125, 23);
+            textBoxLastName.PlaceholderText = "Last Name";
+            textBoxLastName.Size = new Size(110, 23);
             textBoxLastName.TabIndex = 11;
             // 
             // textBoxBadgeNumber
             // 
-            textBoxBadgeNumber.Location = new Point(931, 520);
+            textBoxBadgeNumber.Location = new Point(815, 390);
             textBoxBadgeNumber.Name = "textBoxBadgeNumber";
-            textBoxBadgeNumber.PlaceholderText = "BadgeNumber";
-            textBoxBadgeNumber.Size = new Size(125, 23);
+            textBoxBadgeNumber.PlaceholderText = "Badge Number";
+            textBoxBadgeNumber.Size = new Size(110, 23);
             textBoxBadgeNumber.TabIndex = 12;
             // 
             // labelPolicemanId
             // 
             labelPolicemanId.AutoSize = true;
-            labelPolicemanId.Location = new Point(1095, 120);
+            labelPolicemanId.BackColor = Color.Transparent;
+            labelPolicemanId.Location = new Point(955, 90);
             labelPolicemanId.Name = "labelPolicemanId";
             labelPolicemanId.Size = new Size(73, 15);
             labelPolicemanId.TabIndex = 13;
@@ -195,18 +202,18 @@
             // 
             // textBoxViolationType
             // 
-            textBoxViolationType.Location = new Point(1071, 415);
+            textBoxViolationType.Location = new Point(937, 350);
             textBoxViolationType.Name = "textBoxViolationType";
-            textBoxViolationType.PlaceholderText = "ViolationType";
-            textBoxViolationType.Size = new Size(125, 23);
+            textBoxViolationType.PlaceholderText = "Violation Type";
+            textBoxViolationType.Size = new Size(110, 23);
             textBoxViolationType.TabIndex = 14;
             // 
             // textBoxPolicemanId
             // 
-            textBoxPolicemanId.Location = new Point(1071, 467);
+            textBoxPolicemanId.Location = new Point(937, 311);
             textBoxPolicemanId.Name = "textBoxPolicemanId";
             textBoxPolicemanId.PlaceholderText = "PolicemanId";
-            textBoxPolicemanId.Size = new Size(125, 23);
+            textBoxPolicemanId.Size = new Size(110, 23);
             textBoxPolicemanId.TabIndex = 15;
             // 
             // Form1
