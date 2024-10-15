@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text;
-using System.Linq;
 
 public class Policeman
 {

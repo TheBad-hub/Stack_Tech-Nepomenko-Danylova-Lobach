@@ -101,18 +101,19 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { addToolStripMenuItem, deleteToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(108, 48);
+            contextMenuStrip1.Size = new Size(181, 70);
             // 
             // addToolStripMenuItem
             // 
             addToolStripMenuItem.Name = "addToolStripMenuItem";
-            addToolStripMenuItem.Size = new Size(107, 22);
+            addToolStripMenuItem.Size = new Size(180, 22);
             addToolStripMenuItem.Text = "Add";
+            addToolStripMenuItem.Click += addToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(107, 22);
+            deleteToolStripMenuItem.Size = new Size(180, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click_1;
             // 
@@ -419,40 +420,67 @@
 
         private void deleteToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Отримуємо індекс обраного рядка
+            // Проверяем, выбрана ли строка
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int selectedRow = dataGridView1.SelectedCells[0].RowIndex;
-                // Підтвердження видалення
-                DialogResult dr = MessageBox.Show("Видалити обраний запис?", "", MessageBoxButtons.YesNo);
+                int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                DialogResult dr = MessageBox.Show("Ви дійсно хочете видалити обраний запис?", "", MessageBoxButtons.YesNo);
+
                 if (dr == DialogResult.Yes)
                 {
                     try
                     {
-                        if (dataGridView1.DataSource is List<Policeman>)
+                        // Если отображаются полицейские
+                        if (textBoxBadgeNumber.Visible)
                         {
-                            var selectedPoliceman = (Policeman)dataGridView1.Rows[selectedRow].DataBoundItem;
-                            context.Policemen.Remove(selectedPoliceman);
-                            context.SaveChanges();
-                            LoadData("Policemen");
+                            // Получаем ID полицейского из выбранной строки
+                            int policemanId = (int)dataGridView1.Rows[selectedRowIndex].Cells["PolicemanId"].Value;
+
+                            // Ищем полицейского по ID
+                            var selectedPoliceman = context.Policemen
+                                .Include(p => p.Offenders) // Включаем связанные объекты (Offenders)
+                                .FirstOrDefault(p => p.PolicemanId == policemanId);
+
+                            if (selectedPoliceman != null)
+                            {
+                                // Удаляем полицейского и его нарушителей
+                                context.Policemen.Remove(selectedPoliceman);
+                                context.SaveChanges();
+
+                                // Перезагружаем данные после удаления
+                                LoadData("Policemen");
+                            }
                         }
-                        else if (dataGridView1.DataSource is List<Offender>)
+                        // Если отображаются нарушители
+                        else if (textBoxViolationType.Visible && textBoxPolicemanId.Visible)
                         {
-                            var selectedOffender = (Offender)dataGridView1.Rows[selectedRow].DataBoundItem;
-                            context.Offenders.Remove(selectedOffender);
-                            context.SaveChanges();
-                            LoadData("Offenders");
+                            // Получаем ID нарушителя из выбранной строки
+                            int offenderId = (int)dataGridView1.Rows[selectedRowIndex].Cells["OffenderId"].Value;
+
+                            // Ищем нарушителя по ID
+                            var selectedOffender = context.Offenders
+                                .FirstOrDefault(o => o.OffenderId == offenderId);
+
+                            if (selectedOffender != null)
+                            {
+                                // Удаляем нарушителя
+                                context.Offenders.Remove(selectedOffender);
+                                context.SaveChanges();
+
+                                // Перезагружаем данные после удаления
+                                LoadData("Offenders");
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Ошибка при удалении: " + ex.Message);
+                        MessageBox.Show($"Помилка при видаленні: {ex.Message}");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите запись для удаления.");
+                MessageBox.Show("Будь ласка, оберіть запис для видалення.");
             }
         }
         private void policemenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -465,6 +493,10 @@
         {
             LoadData("Offenders");
             ToggleInputFields("Offenders");
+        }
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buttonAdd_Click(sender, e);
         }
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem addToolStripMenuItem;
