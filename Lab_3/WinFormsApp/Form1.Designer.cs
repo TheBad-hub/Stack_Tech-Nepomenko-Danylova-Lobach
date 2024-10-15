@@ -246,15 +246,30 @@
         {
             if (table == "Policemen")
             {
-                var policemen = context.Policemen.ToList();
-                dataGridView1.DataSource = policemen;
+                var policemen = context.Policemen
+                    .Include(p => p.Offenders) // Загружаємо правопорушників
+                    .ToList();
+
+                // Створюємо список для відображення інформації
+                var displayPolicemen = policemen.Select(p => new
+                {
+                    p.PolicemanId,
+                    p.FirstName,
+                    p.LastName,
+                    p.BadgeNumber,
+                    OffendersList = p.Offenders.Count > 0
+                        ? string.Join(", ", p.Offenders.Select(o => $"{o.FirstName} {o.LastName}"))
+                        : "Немає правопорушників"
+                }).ToList();
+
+                dataGridView1.DataSource = displayPolicemen;
             }
             else if (table == "Offenders")
             {
                 var offenders = context.Offenders
                     .Include(o => o.Policeman)
                     .ToList();
-                // Створюємо список, щоб зберігати інформацію для відображення
+
                 var displayOffenders = offenders.Select(o => new
                 {
                     o.OffenderId,
@@ -265,12 +280,6 @@
                 }).ToList();
 
                 dataGridView1.DataSource = displayOffenders;
-
-                // Прибираємо колонку Policeman
-                if (dataGridView1.Columns.Contains("Policeman"))
-                {
-                    dataGridView1.Columns["Policeman"].Visible = false;
-                }
             }
         }
 
@@ -320,23 +329,22 @@
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, чи є джерело даних списком поліцейських
-            if (textBoxBadgeNumber.Visible)
+            if (textBoxBadgeNumber.Visible) // Добавляем полицейского
             {
-                // Проверка на пустые поля
                 if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
                     string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
                     string.IsNullOrWhiteSpace(textBoxBadgeNumber.Text))
                 {
                     MessageBox.Show("Будь ласка, заповніть усі поля поліцейського.");
-                    return; // Завершаем метод, если поля не заполнены
+                    return;
                 }
 
                 var newPoliceman = new Policeman
                 {
                     FirstName = textBoxFirstName.Text,
                     LastName = textBoxLastName.Text,
-                    BadgeNumber = textBoxBadgeNumber.Text
+                    BadgeNumber = textBoxBadgeNumber.Text,
+                    Offenders = new List<Offender>() // Инициализация коллекции нарушителей
                 };
 
                 context.Policemen.Add(newPoliceman);
@@ -344,23 +352,23 @@
                 LoadData("Policemen");
                 cleaning_TextBoxes();
             }
-            else if (textBoxViolationType.Visible && textBoxPolicemanId.Visible)
+            else if (textBoxViolationType.Visible && textBoxPolicemanId.Visible) // Добавляем нарушителя
             {
-                // Перевірка на пусті поля
                 if (string.IsNullOrWhiteSpace(textBoxFirstName.Text) ||
                     string.IsNullOrWhiteSpace(textBoxLastName.Text) ||
                     string.IsNullOrWhiteSpace(textBoxViolationType.Text) ||
                     string.IsNullOrWhiteSpace(textBoxPolicemanId.Text))
                 {
                     MessageBox.Show("Будь ласка, заповніть усі поля порушника.");
-                    return; // Завершаем метод, если поля не заполнены
+                    return;
                 }
 
-                // Перевіряємо введений ID поліцейського
                 if (int.TryParse(textBoxPolicemanId.Text, out int policemanId))
                 {
-                    // Перевіряємо, чи є поліцейський з таким ID
-                    var existingPoliceman = context.Policemen.Find(policemanId);
+                    var existingPoliceman = context.Policemen
+                        .Include(p => p.Offenders) // Загружаем связанные объекты нарушителей
+                        .FirstOrDefault(p => p.PolicemanId == policemanId);
+
                     if (existingPoliceman != null)
                     {
                         var newOffender = new Offender
@@ -371,9 +379,18 @@
                             PolicemanId = existingPoliceman.PolicemanId
                         };
 
-                        context.Offenders.Add(newOffender);
+                        context.Offenders.Add(newOffender); // Сохраняем нарушителя
                         context.SaveChanges();
+
+                        // Обновляем коллекцию нарушителей для полицейского
+                        existingPoliceman.Offenders.Add(newOffender);
+                        context.Entry(existingPoliceman).State = EntityState.Modified; // Указываем, что полицейский изменился
+                        context.SaveChanges(); // Сохраняем обновление коллекции нарушителей
+
+                        // Обновляем данные на форме
+                        LoadData("Policemen");
                         LoadData("Offenders");
+
                         cleaning_TextBoxes();
                     }
                     else
@@ -395,7 +412,7 @@
             {
                 int selectedRow = dataGridView1.SelectedCells[0].RowIndex;
                 // Підтвердження видалення
-                DialogResult dr = MessageBox.Show("Видалити вибрану запис?", "", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Видалити обраний запис?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
                     try
