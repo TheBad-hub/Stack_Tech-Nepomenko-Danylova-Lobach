@@ -1,38 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Text;
-
-public class Policeman
-{
-    public int PolicemanId { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string BadgeNumber { get; set; }
-    public virtual ICollection<Offender> Offenders { get; set; }
-}
-
-public class Offender
-{
-    public int OffenderId { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string ViolationType { get; set; }
-    public int PolicemanId { get; set; }
-    public virtual Policeman Policeman { get; set; }
-    public string PolicemanFullName => Policeman != null ? $"{Policeman.FirstName} {Policeman.LastName}" : "No Policeman";
-}
-
-public class PoliceContext : DbContext
-{
-    public DbSet<Policeman> Policemen { get; set; }
-    public DbSet<Offender> Offenders { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder
-            .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=PoliceDB;Trusted_Connection=True;")
-            .UseLazyLoadingProxies();
-    }
-}
+﻿using System.Text;
 
 public class Program
 {
