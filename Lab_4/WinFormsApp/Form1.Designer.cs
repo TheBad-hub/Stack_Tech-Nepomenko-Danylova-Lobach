@@ -311,10 +311,154 @@ namespace WinFormsApp
             TimeSpan elapsed = DateTime.Now - startTime;
             lblTimeElapsed.Text = string.Format("{0:hh\\:mm\\:ss\\.fff}", elapsed);
         }
-        private void btnStart_Click(object sender, EventArgs e) { }
-        private void btnCancel_Click(object sender, EventArgs e) { }
-        private void EncryptToolStripMenuItem_Click(object sender, EventArgs e) { }
-        private void DecryptToolStripMenuItem_Click(object sender, EventArgs e) { }
-        private void btnPause_Click(object sender, EventArgs e) { }
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(txtFilePath.Text) || string.IsNullOrWhiteSpace(txtKey.Text))
+            {
+                MessageBox.Show("Будь ласка, виберіть файл та введіть ключ.");
+                return;
+            }
+
+            inputFilePath = txtFilePath.Text;
+
+            if (isEncrypting)
+            {
+                // Додаем суффикс .enc при шифровании
+                outputFilePath = inputFilePath + ".enc";
+            }
+            else
+            {
+                // При дешифровке сохраняем исходное расширение файла
+                if (inputFilePath.EndsWith(".enc"))
+                {
+                    string originalExtension = Path.GetExtension(inputFilePath.Substring(0, inputFilePath.Length - 4)); // Извлекаем расширение
+                    string fileNameWithoutEnc = Path.GetFileNameWithoutExtension(inputFilePath.Substring(0, inputFilePath.Length - 4)); // Имя файла без .enc
+                    outputFilePath = fileNameWithoutEnc + originalExtension; // Восстанавливаем исходное имя с расширением
+                }
+                else
+                {
+                    MessageBox.Show("Некоректний файл для дешифрування.");
+                    return;
+                }
+            }
+
+            // Используем SaveFileDialog для выбора места сохранения
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "All files (*.*)|*.*"; // Фильтр для сохранения файла
+                saveFileDialog.Title = isEncrypting ? "Збережіть зашифрований файл" : "Збережіть розшифрований файл";
+                saveFileDialog.FileName = Path.GetFileName(outputFilePath); // Устанавливаем правильное имя файла
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    outputFilePath = saveFileDialog.FileName; // Получаем путь для сохранения
+                }
+                else
+                {
+                    MessageBox.Show("Операцію скасовано. Файл не було вибрано.");
+                    return;
+                }
+            }
+
+            // Отримуємо вибраний пріоритет
+            string selectedPriority = cmbPriority.SelectedItem.ToString();
+
+            ThreadPriority priority = ThreadPriority.Normal;
+
+            switch (selectedPriority)
+            {
+                case "Низький":
+                    priority = ThreadPriority.BelowNormal;
+                    break;
+                case "Середній":
+                    priority = ThreadPriority.Normal;
+                    break;
+                case "Високий":
+                    priority = ThreadPriority.AboveNormal;
+                    break;
+            }
+
+            // Встановлюємо пріоритет фоновому робочому потоку
+            Thread.CurrentThread.Priority = priority;
+
+            encryptionKey = txtKey.Text;
+            startTime = DateTime.Now; // Запоминаем начало
+            timer.Start(); // Запускаем таймер
+            worker.RunWorkerAsync(); // Запускаємо фоновий процес
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            isPaused = !isPaused; // Переключаем состояние
+            btnPause.Text = isPaused ? "Продовжити" : "Пауза"; // Изменяем текст кнопки
+
+            if (isPaused)
+            {
+                encryptor.Pause();
+                timer.Stop(); // Зупиняємо таймер під час паузи
+            }
+            else
+            {
+                encryptor.Resume();
+                timer.Start(); // Запускаємо таймер знову
+            }
+        }
+
+        // Кнопка для скасування шифрування
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (worker.IsBusy)
+            {
+                worker.CancelAsync(); // Запросить отмену
+            }
+
+            // Ожидаем завершения потока
+            while (worker.IsBusy)
+            {
+                Application.DoEvents(); // Обновляем интерфейс
+                Thread.Sleep(100); // Небольшая задержка для уменьшения нагрузки
+            }
+
+            // Проверяем, был ли создан выходной файл
+            if (File.Exists(outputFilePath))
+            {
+                try
+                {
+                    File.Delete(outputFilePath); // Удаляем выходной файл
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось удалить файл: {ex.Message}");
+                    return; // Выход из метода, если удаление не удалось
+                }
+            }
+
+            // Обнуляем прогресс-бар
+            timer.Stop();
+            progressBar.Value = 0;
+            lblProgress.Text = "0%";
+
+            // Обнуляем время
+            lblTimeElapsed.Text = "00:00:00.000";
+        }
+
+        // Кнопка для вибору між шифруванням і дешифруванням
+        private void toggleEncryptDecrypt(object sender, EventArgs e)
+        {
+            btnStart.Text = isEncrypting ? "Шифрувати" : "Дешифрувати";
+        }
+        private void EncryptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //BackgroundImage = WinFormsApp1.Properties.Resources.noisy_gradients; // Фон для шифрования
+            isEncrypting = true;
+            toggleEncryptDecrypt(sender, e);
+        }
+
+        private void DecryptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //BackgroundImage = WinFormsApp1.Properties.Resources.noisy_gradients_2; // Фон для дешифрования
+            isEncrypting = false;
+            toggleEncryptDecrypt(sender, e);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace WinFormsApp
         private DateTime startTime;
         private BackgroundWorker worker;
         private Label lblTimeElapsed;
+        private bool isPaused = false;
         private Timer timer;
 
         private ManualResetEvent pauseEvent = new ManualResetEvent(true); // Изначально поток может работать
@@ -20,7 +21,7 @@ namespace WinFormsApp
         public Form1()
         {
             InitializeComponent();
-            //InitializeBackgroundWorker();
+            InitializeBackgroundWorker();
         }
     }
 }
