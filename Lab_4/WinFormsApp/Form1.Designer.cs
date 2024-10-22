@@ -172,6 +172,7 @@ namespace WinFormsApp
             cmbPriority.Name = "cmbPriority";
             cmbPriority.Size = new Size(200, 23);
             cmbPriority.TabIndex = 1;
+            cmbPriority.SelectedIndex = 1;
             // 
             // Form1
             // 
