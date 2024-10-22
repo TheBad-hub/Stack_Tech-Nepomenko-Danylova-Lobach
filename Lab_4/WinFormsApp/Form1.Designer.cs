@@ -52,7 +52,7 @@ namespace WinFormsApp
             // 
             // txtFilePath
             // 
-            txtFilePath.Location = new Point(27, 60);
+            txtFilePath.Location = new Point(66, 64);
             txtFilePath.Name = "txtFilePath";
             txtFilePath.PlaceholderText = "Оберіть файл для шифрування/дешифрування";
             txtFilePath.Size = new Size(527, 23);
@@ -60,7 +60,7 @@ namespace WinFormsApp
             // 
             // txtKey
             // 
-            txtKey.Location = new Point(27, 102);
+            txtKey.Location = new Point(66, 109);
             txtKey.Name = "txtKey";
             txtKey.PlaceholderText = "Введіть ключ шифрування";
             txtKey.Size = new Size(527, 23);
@@ -68,7 +68,7 @@ namespace WinFormsApp
             // 
             // btnChooseFile
             // 
-            btnChooseFile.Location = new Point(626, 80);
+            btnChooseFile.Location = new Point(66, 174);
             btnChooseFile.Name = "btnChooseFile";
             btnChooseFile.Size = new Size(120, 30);
             btnChooseFile.TabIndex = 2;
@@ -78,7 +78,7 @@ namespace WinFormsApp
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(27, 189);
+            btnStart.Location = new Point(70, 252);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(120, 40);
             btnStart.TabIndex = 3;
@@ -88,7 +88,7 @@ namespace WinFormsApp
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(359, 189);
+            btnCancel.Location = new Point(459, 252);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 40);
             btnCancel.TabIndex = 4;
@@ -98,7 +98,7 @@ namespace WinFormsApp
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(27, 335);
+            progressBar.Location = new Point(66, 371);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(497, 30);
             progressBar.TabIndex = 6;
@@ -108,7 +108,7 @@ namespace WinFormsApp
             lblProgress.AutoSize = true;
             lblProgress.BackColor = Color.Transparent;
             lblProgress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            lblProgress.Location = new Point(539, 340);
+            lblProgress.Location = new Point(568, 373);
             lblProgress.Name = "lblProgress";
             lblProgress.Size = new Size(38, 25);
             lblProgress.TabIndex = 7;
@@ -127,6 +127,7 @@ namespace WinFormsApp
             // 
             // EncryptToolStripMenuItem
             // 
+            EncryptToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight;
             EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem";
             EncryptToolStripMenuItem.Size = new Size(83, 20);
             EncryptToolStripMenuItem.Text = "Шифрувати";
@@ -134,6 +135,7 @@ namespace WinFormsApp
             // 
             // DecryptToolStripMenuItem
             // 
+            DecryptToolStripMenuItem.ForeColor = SystemColors.ButtonHighlight;
             DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem";
             DecryptToolStripMenuItem.Size = new Size(97, 20);
             DecryptToolStripMenuItem.Text = "Дешифрувати";
@@ -141,18 +143,20 @@ namespace WinFormsApp
             // 
             // btnPause
             // 
-            btnPause.Location = new Point(193, 189);
+            btnPause.BackColor = Color.Transparent;
+            btnPause.Location = new Point(265, 252);
             btnPause.Name = "btnPause";
             btnPause.Size = new Size(120, 40);
             btnPause.TabIndex = 9;
             btnPause.Text = "Пауза";
-            btnPause.UseVisualStyleBackColor = true;
+            btnPause.UseVisualStyleBackColor = false;
             btnPause.Click += btnPause_Click;
             // 
             // lblTimeElapsed
             // 
+            lblTimeElapsed.BackColor = Color.Transparent;
             lblTimeElapsed.Font = new Font("Segoe UI", 12F);
-            lblTimeElapsed.Location = new Point(30, 300);
+            lblTimeElapsed.Location = new Point(66, 332);
             lblTimeElapsed.Name = "lblTimeElapsed";
             lblTimeElapsed.Size = new Size(200, 30);
             lblTimeElapsed.TabIndex = 0;
@@ -168,7 +172,7 @@ namespace WinFormsApp
             cmbPriority.Cursor = Cursors.Hand;
             cmbPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPriority.Items.AddRange(new object[] { "Низький", "Середній", "Високий" });
-            cmbPriority.Location = new Point(27, 140);
+            cmbPriority.Location = new Point(393, 178);
             cmbPriority.Name = "cmbPriority";
             cmbPriority.Size = new Size(200, 23);
             cmbPriority.TabIndex = 1;
