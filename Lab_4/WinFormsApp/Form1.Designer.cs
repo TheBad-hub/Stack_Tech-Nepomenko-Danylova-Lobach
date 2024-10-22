@@ -176,7 +176,6 @@ namespace WinFormsApp
             cmbPriority.Name = "cmbPriority";
             cmbPriority.Size = new Size(200, 23);
             cmbPriority.TabIndex = 1;
-            cmbPriority.SelectedIndex = 1;
             // 
             // Form1
             // 
@@ -194,8 +193,10 @@ namespace WinFormsApp
             Controls.Add(txtKey);
             Controls.Add(txtFilePath);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Шифрувальник файлів";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
