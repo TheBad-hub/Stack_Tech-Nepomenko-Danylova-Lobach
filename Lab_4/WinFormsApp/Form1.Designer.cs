@@ -54,7 +54,7 @@ namespace WinFormsApp
             txtFilePath.Location = new Point(30, 30);
             txtFilePath.Name = "txtFilePath";
             txtFilePath.PlaceholderText = "Оберіть файл для шифрування/дешифрування";
-            txtFilePath.Size = new Size(527, 27);
+            txtFilePath.Size = new Size(527, 23);
             txtFilePath.TabIndex = 0;
             // 
             // txtKey
@@ -62,7 +62,7 @@ namespace WinFormsApp
             txtKey.Location = new Point(30, 70);
             txtKey.Name = "txtKey";
             txtKey.PlaceholderText = "Введіть ключ шифрування";
-            txtKey.Size = new Size(527, 27);
+            txtKey.Size = new Size(527, 23);
             txtKey.TabIndex = 1;
             // 
             // btnChooseFile
@@ -108,7 +108,7 @@ namespace WinFormsApp
             lblProgress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             lblProgress.Location = new Point(539, 335);
             lblProgress.Name = "lblProgress";
-            lblProgress.Size = new Size(45, 31);
+            lblProgress.Size = new Size(38, 25);
             lblProgress.TabIndex = 7;
             lblProgress.Text = "0%";
             // 
@@ -118,21 +118,21 @@ namespace WinFormsApp
             menuStrip1.Items.AddRange(new ToolStripItem[] { EncryptToolStripMenuItem, DecryptToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(882, 28);
+            menuStrip1.Size = new Size(887, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
             // EncryptToolStripMenuItem
             // 
             EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem";
-            EncryptToolStripMenuItem.Size = new Size(103, 24);
+            EncryptToolStripMenuItem.Size = new Size(83, 20);
             EncryptToolStripMenuItem.Text = "Шифрувати";
             EncryptToolStripMenuItem.Click += EncryptToolStripMenuItem_Click;
             // 
             // DecryptToolStripMenuItem
             // 
             DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem";
-            DecryptToolStripMenuItem.Size = new Size(119, 24);
+            DecryptToolStripMenuItem.Size = new Size(97, 20);
             DecryptToolStripMenuItem.Text = "Дешифрувати";
             DecryptToolStripMenuItem.Click += DecryptToolStripMenuItem_Click;
             // 
@@ -167,14 +167,13 @@ namespace WinFormsApp
             cmbPriority.Items.AddRange(new object[] { "Низький", "Середній", "Високий" });
             cmbPriority.Location = new Point(30, 110);
             cmbPriority.Name = "cmbPriority";
-            cmbPriority.Size = new Size(200, 28);
+            cmbPriority.Size = new Size(200, 23);
             cmbPriority.TabIndex = 1;
-            cmbPriority.SelectedIndex = 1;
             // 
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(882, 393);
+            ClientSize = new Size(887, 405);
             Controls.Add(lblTimeElapsed);
             Controls.Add(cmbPriority);
             Controls.Add(btnPause);
