@@ -249,9 +249,9 @@ namespace WinFormsApp
             }
             catch (CryptographicException)
             {
-                MessageBox.Show("Ключі не сходяться");
-                e.Cancel = true;
                 btnCancel_Click(sender, e);
+                e.Cancel = true;
+                MessageBox.Show("Поганий ключ\n(Ключі не сходяться або інші проблеми).");
             }
             catch (Exception ex)
             {
