@@ -458,14 +458,14 @@ namespace WinFormsApp
         }
         private void EncryptToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //BackgroundImage = WinFormsApp1.Properties.Resources.noisy_gradients; // Фон для шифрования
+            BackgroundImage = Properties.Resources.Lab_4BC_1;
             isEncrypting = true;
             toggleEncryptDecrypt(sender, e);
         }
 
         private void DecryptToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //BackgroundImage = WinFormsApp1.Properties.Resources.noisy_gradients_2; // Фон для дешифрования
+            BackgroundImage = Properties.Resources.Lab_4BC_2;
             isEncrypting = false;
             toggleEncryptDecrypt(sender, e);
         }
