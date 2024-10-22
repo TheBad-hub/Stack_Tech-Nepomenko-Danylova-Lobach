@@ -52,7 +52,7 @@ namespace WinFormsApp
             // 
             // txtFilePath
             // 
-            txtFilePath.Location = new Point(30, 30);
+            txtFilePath.Location = new Point(27, 60);
             txtFilePath.Name = "txtFilePath";
             txtFilePath.PlaceholderText = "Оберіть файл для шифрування/дешифрування";
             txtFilePath.Size = new Size(527, 23);
@@ -60,7 +60,7 @@ namespace WinFormsApp
             // 
             // txtKey
             // 
-            txtKey.Location = new Point(30, 70);
+            txtKey.Location = new Point(27, 102);
             txtKey.Name = "txtKey";
             txtKey.PlaceholderText = "Введіть ключ шифрування";
             txtKey.Size = new Size(527, 23);
@@ -68,7 +68,7 @@ namespace WinFormsApp
             // 
             // btnChooseFile
             // 
-            btnChooseFile.Location = new Point(587, 30);
+            btnChooseFile.Location = new Point(626, 80);
             btnChooseFile.Name = "btnChooseFile";
             btnChooseFile.Size = new Size(120, 30);
             btnChooseFile.TabIndex = 2;
@@ -78,7 +78,7 @@ namespace WinFormsApp
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(30, 150);
+            btnStart.Location = new Point(27, 189);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(120, 40);
             btnStart.TabIndex = 3;
@@ -88,7 +88,7 @@ namespace WinFormsApp
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(335, 150);
+            btnCancel.Location = new Point(359, 189);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 40);
             btnCancel.TabIndex = 4;
@@ -106,8 +106,9 @@ namespace WinFormsApp
             // lblProgress
             // 
             lblProgress.AutoSize = true;
+            lblProgress.BackColor = Color.Transparent;
             lblProgress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            lblProgress.Location = new Point(539, 335);
+            lblProgress.Location = new Point(539, 340);
             lblProgress.Name = "lblProgress";
             lblProgress.Size = new Size(38, 25);
             lblProgress.TabIndex = 7;
@@ -115,11 +116,12 @@ namespace WinFormsApp
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = Color.Transparent;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { EncryptToolStripMenuItem, DecryptToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(887, 24);
+            menuStrip1.Size = new Size(853, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -139,7 +141,7 @@ namespace WinFormsApp
             // 
             // btnPause
             // 
-            btnPause.Location = new Point(190, 150);
+            btnPause.Location = new Point(193, 189);
             btnPause.Name = "btnPause";
             btnPause.Size = new Size(120, 40);
             btnPause.TabIndex = 9;
@@ -166,7 +168,7 @@ namespace WinFormsApp
             cmbPriority.Cursor = Cursors.Hand;
             cmbPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPriority.Items.AddRange(new object[] { "Низький", "Середній", "Високий" });
-            cmbPriority.Location = new Point(30, 110);
+            cmbPriority.Location = new Point(27, 140);
             cmbPriority.Name = "cmbPriority";
             cmbPriority.Size = new Size(200, 23);
             cmbPriority.TabIndex = 1;
@@ -174,7 +176,8 @@ namespace WinFormsApp
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(887, 405);
+            BackgroundImage = Properties.Resources.Lab_4BC_1;
+            ClientSize = new Size(853, 425);
             Controls.Add(lblTimeElapsed);
             Controls.Add(cmbPriority);
             Controls.Add(btnPause);
