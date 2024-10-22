@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AESEncrypt\AESEncrypt.csproj" />
+    <ProjectReference Include="..\XOREncrypt\XOREncrypt.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,11 +12,8 @@ namespace WinFormsApp
         private Encryptor encryptor;
         private DateTime startTime;
         private BackgroundWorker worker;
-        private Label lblTimeElapsed;
         private bool isPaused = false;
         private Timer timer;
-
-        private ManualResetEvent pauseEvent = new ManualResetEvent(true); // Изначально поток может работать
 
         public Form1()
         {
