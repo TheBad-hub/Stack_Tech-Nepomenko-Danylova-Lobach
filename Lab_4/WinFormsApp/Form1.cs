@@ -12,8 +12,6 @@ namespace WinFormsApp
         private Encryptor encryptor;
         private DateTime startTime;
         private BackgroundWorker worker;
-        private bool isPaused = false;
-        private bool isCancelled = false;
         private Label lblTimeElapsed;
         private Timer timer;
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security.Cryptography;
 using Timer = System.Windows.Forms.Timer;
 
 namespace WinFormsApp
@@ -208,12 +209,112 @@ namespace WinFormsApp
         private Button btnPause;
         private ComboBox cmbPriority;
 
-        private void btnChooseFile_Click(object sender, EventArgs e) { }
+        private void InitializeBackgroundWorker()
+        {
+            encryptor = new Encryptor();
+            worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
+            worker.DoWork += Worker_DoWork;
+            worker.ProgressChanged += Worker_ProgressChanged;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+        }
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true; // Устанавливаем флаг отмены
+                    return; // Прерываем выполнение
+                }
+
+                if (isEncrypting)
+                {
+                    encryptor.EncryptFile(inputFilePath, outputFilePath, encryptionKey, worker);
+                }
+                else
+                {
+                    encryptor.DecryptFile(inputFilePath, outputFilePath, encryptionKey, worker);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                e.Cancel = true; // Устанавливаем флаг отмены
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("У вас нет разрешения на доступ к файлу.");
+                e.Cancel = true;
+            }
+            catch (CryptographicException)
+            {
+                MessageBox.Show("Ключі не сходяться");
+                e.Cancel = true;
+                btnCancel_Click(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+                e.Cancel = true;
+            }
+        }
+
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+            lblProgress.Text = $"{e.ProgressPercentage}%";
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop(); // Останавливаем таймер
+
+            if (e.Cancelled)
+            {
+                MessageBox.Show("Операція скасована. Файл видалено.");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Виникла помилка: " + e.Error.Message);
+            }
+            else
+            {
+                // Если операция завершена успешно
+                TimeSpan timeTaken = DateTime.Now - startTime; // Вираховуємо час виконання
+                lblTimeElapsed.Text = string.Format("{0:hh\\:mm\\:ss\\.fff}", timeTaken); // Відображаємо час
+
+                FileInfo fileInfo = new FileInfo(outputFilePath);
+                long fileSizeInBytes = fileInfo.Length;
+
+                string message = $"Операція завершена.\n" +
+                                 $"Файл: {Path.GetFileName(outputFilePath)}\n" +
+                                 $"Розмір файла: {fileSizeInBytes / 1024.0:F2} КБ\n" +
+                                 $"Час виконання: {timeTaken.TotalSeconds:F2} секунд.";
+
+                MessageBox.Show(message);
+            }
+        }
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    inputFilePath = openFileDialog.FileName;
+                    txtFilePath.Text = inputFilePath;
+                }
+            }
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsed = DateTime.Now - startTime;
+            lblTimeElapsed.Text = string.Format("{0:hh\\:mm\\:ss\\.fff}", elapsed);
+        }
         private void btnStart_Click(object sender, EventArgs e) { }
         private void btnCancel_Click(object sender, EventArgs e) { }
         private void EncryptToolStripMenuItem_Click(object sender, EventArgs e) { }
         private void DecryptToolStripMenuItem_Click(object sender, EventArgs e) { }
         private void btnPause_Click(object sender, EventArgs e) { }
-        private void Timer_Tick(object sender, EventArgs e) { }
     }
 }
