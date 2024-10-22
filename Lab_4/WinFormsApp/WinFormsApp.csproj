@@ -10,4 +10,8 @@
 	<ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AESEncrypt\AESEncrypt.csproj" />
+  </ItemGroup>
+
 </Project>
