@@ -252,7 +252,7 @@ namespace WinFormsApp
             }
             catch (CryptographicException)
             {
-                btnCancel_Click(sender, e);
+                timer.Stop();
                 e.Cancel = true;
                 MessageBox.Show("Поганий ключ\n(Ключі не сходяться або інші проблеми).");
             }
@@ -275,6 +275,7 @@ namespace WinFormsApp
 
             if (e.Cancelled)
             {
+                btnCancel_Click(sender, e);
                 MessageBox.Show("Операція скасована. Файл видалено.");
             }
             else if (e.Error != null)
