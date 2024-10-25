@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp\ConsoleApp.csproj" />
+    <ProjectReference Include="..\DAO\DAO.csproj" />
   </ItemGroup>
 
   <ItemGroup>

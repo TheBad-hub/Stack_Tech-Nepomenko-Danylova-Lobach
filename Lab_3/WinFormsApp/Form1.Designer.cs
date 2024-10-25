@@ -101,19 +101,19 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { addToolStripMenuItem, deleteToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 70);
+            contextMenuStrip1.Size = new Size(108, 48);
             // 
             // addToolStripMenuItem
             // 
             addToolStripMenuItem.Name = "addToolStripMenuItem";
-            addToolStripMenuItem.Size = new Size(180, 22);
+            addToolStripMenuItem.Size = new Size(107, 22);
             addToolStripMenuItem.Text = "Add";
             addToolStripMenuItem.Click += addToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(180, 22);
+            deleteToolStripMenuItem.Size = new Size(107, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click_1;
             // 
@@ -239,7 +239,6 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Police department";
-            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -259,18 +258,17 @@
         {
             if (table == "Policemen")
             {
-                var policemen = context.Policemen
-                    .Include(p => p.Offenders) // Загружаємо правопорушників
-                    .ToList();
+                // Получаем список полицейских с нарушителями через DAO
+                var policemen = policemanDao.GetAll();
 
-                // Створюємо список для відображення інформації
+                // Форматируем данные для отображения в таблице
                 var displayPolicemen = policemen.Select(p => new
                 {
                     p.PolicemanId,
                     p.FirstName,
                     p.LastName,
                     p.BadgeNumber,
-                    OffendersList = p.Offenders.Count > 0
+                    OffendersList = p.Offenders.Any()
                         ? string.Join(", ", p.Offenders.Select(o => $"{o.FirstName} {o.LastName}"))
                         : "Немає правопорушників"
                 }).ToList();
@@ -279,10 +277,8 @@
             }
             else if (table == "Offenders")
             {
-                var offenders = context.Offenders
-                    .Include(o => o.Policeman)
-                    .ToList();
-
+                // Загружаем нарушителей без форматирования
+                var offenders = offenderDao.GetAll();
                 var displayOffenders = offenders.Select(o => new
                 {
                     o.OffenderId,
@@ -360,8 +356,7 @@
                     Offenders = new List<Offender>() // Инициализация коллекции нарушителей
                 };
 
-                context.Policemen.Add(newPoliceman);
-                context.SaveChanges();
+                policemanDao.Add(newPoliceman);
                 LoadData("Policemen");
                 cleaning_TextBoxes();
             }
@@ -378,9 +373,7 @@
 
                 if (int.TryParse(textBoxPolicemanId.Text, out int policemanId))
                 {
-                    var existingPoliceman = context.Policemen
-                        .Include(p => p.Offenders) // Загружаем связанные объекты нарушителей
-                        .FirstOrDefault(p => p.PolicemanId == policemanId);
+                    var existingPoliceman = policemanDao.GetByIdWithOffenders(policemanId); ;
 
                     if (existingPoliceman != null)
                     {
@@ -392,18 +385,13 @@
                             PolicemanId = existingPoliceman.PolicemanId
                         };
 
-                        context.Offenders.Add(newOffender); // Сохраняем нарушителя
-                        context.SaveChanges();
-
-                        // Обновляем коллекцию нарушителей для полицейского
+                        // Добавляем нарушителя в контекст и обновляем коллекцию
+                        offenderDao.Add(newOffender);
                         existingPoliceman.Offenders.Add(newOffender);
-                        context.Entry(existingPoliceman).State = EntityState.Modified; // Указываем, что полицейский изменился
-                        context.SaveChanges(); // Сохраняем обновление коллекции нарушителей
+                        policemanDao.Update(existingPoliceman); // Обновляем полицейского в базе данных
 
-                        // Обновляем данные на форме
                         LoadData("Policemen");
                         LoadData("Offenders");
-
                         cleaning_TextBoxes();
                     }
                     else
@@ -436,16 +424,13 @@
                             // Получаем ID полицейского из выбранной строки
                             int policemanId = (int)dataGridView1.Rows[selectedRowIndex].Cells["PolicemanId"].Value;
 
-                            // Ищем полицейского по ID
-                            var selectedPoliceman = context.Policemen
-                                .Include(p => p.Offenders) // Включаем связанные объекты (Offenders)
-                                .FirstOrDefault(p => p.PolicemanId == policemanId);
+                            // Получаем полицейского с помощью DAO
+                            var selectedPoliceman = policemanDao.GetByIdWithOffenders(policemanId);
 
                             if (selectedPoliceman != null)
                             {
                                 // Удаляем полицейского и его нарушителей
-                                context.Policemen.Remove(selectedPoliceman);
-                                context.SaveChanges();
+                                policemanDao.Delete(selectedPoliceman);
 
                                 // Перезагружаем данные после удаления
                                 LoadData("Policemen");
@@ -457,15 +442,13 @@
                             // Получаем ID нарушителя из выбранной строки
                             int offenderId = (int)dataGridView1.Rows[selectedRowIndex].Cells["OffenderId"].Value;
 
-                            // Ищем нарушителя по ID
-                            var selectedOffender = context.Offenders
-                                .FirstOrDefault(o => o.OffenderId == offenderId);
+                            // Получаем нарушителя с помощью DAO
+                            var selectedOffender = offenderDao.GetById(offenderId);
 
                             if (selectedOffender != null)
                             {
                                 // Удаляем нарушителя
-                                context.Offenders.Remove(selectedOffender);
-                                context.SaveChanges();
+                                offenderDao.Delete(selectedOffender);
 
                                 // Перезагружаем данные после удаления
                                 LoadData("Offenders");
